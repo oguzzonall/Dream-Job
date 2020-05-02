@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 
 namespace CareerPortal.Entities.Concrete
 {
-    internal class JobPostStatus : Entity
+    public class JobPostStatus : Entity
     {
         public JobPostStatus()
         {

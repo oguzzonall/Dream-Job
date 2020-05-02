@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 
 namespace CareerPortal.Entities.Concrete
 {
-    internal class Region : Entity
+    public class Region : Entity
     {
         public Region()
         {

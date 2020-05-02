@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 
 namespace CareerPortal.Entities.Concrete
 {
-    internal class Experience : Entity
+    public class Experience : Entity
     {
         public Experience()
         {

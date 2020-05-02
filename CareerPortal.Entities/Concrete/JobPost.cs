@@ -3,7 +3,7 @@ using System;
 
 namespace CareerPortal.Entities.Concrete
 {
-    internal class JobPost : Entity
+    public class JobPost : Entity
     {
         public string JobPostTitle { get; set; }
         public string JobPostDescription { get; set; }

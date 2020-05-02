@@ -4,4 +4,13 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Concrete\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CareerPortal.Core\CareerPortal.Core.csproj" />
+    <ProjectReference Include="..\CareerPortal.Entities\CareerPortal.Entities.csproj" />
+  </ItemGroup>
+
 </Project>

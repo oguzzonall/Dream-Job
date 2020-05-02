@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 
 namespace CareerPortal.Entities.Concrete
 {
-    internal class Gender : Entity
+    public class Gender : Entity
     {
         public Gender()
         {
