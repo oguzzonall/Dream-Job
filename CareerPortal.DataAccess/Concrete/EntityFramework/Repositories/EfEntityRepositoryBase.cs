@@ -9,13 +9,13 @@ using System.Linq.Expressions;
 
 namespace CareerPortal.DataAccess.Concrete.EntityFramework.Repositories
 {
-    public class EfEntityRepository<TEntity> : IEntityRepository<TEntity>
+    public class EfEntityRepositoryBase<TEntity> : IEntityRepository<TEntity>
         where TEntity : class, IEntity, new()
     {
-        private readonly AppDbContext _context;
+        protected readonly AppDbContext _context;
         private readonly DbSet<TEntity> _dbSet;
 
-        public EfEntityRepository(AppDbContext context)
+        public EfEntityRepositoryBase(AppDbContext context)
         {
             _context = context;
             _dbSet = _context.Set<TEntity>();
