@@ -1,8 +1,9 @@
 ﻿using CareerPortal.Core.DataAccess.Abstract.Dals;
+using System;
 
 namespace CareerPortal.Core.DataAccess.Abstract.UnitOfWorks
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork: IDisposable
     {
         ICountryDal countryDal { get; }
         IExperienceDal experienceDal { get; }
@@ -12,6 +13,6 @@ namespace CareerPortal.Core.DataAccess.Abstract.UnitOfWorks
         IJobTypeDal jobTypeDal { get; }
         IRegionDal regionDal { get; }
         ISectorDal sectorDal { get; }
-        int SaveChanges();
+        int Commit();
     }
 }

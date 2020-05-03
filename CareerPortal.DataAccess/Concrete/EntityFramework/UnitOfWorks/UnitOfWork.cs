@@ -7,6 +7,7 @@ namespace CareerPortal.DataAccess.Concrete.EntityFramework.UnitOfWorks
 {
     public class UnitOfWork : IUnitOfWork
     {
+        private bool disposed = false;
         private readonly AppDbContext _context;
 
         private EfCountryDal _efCountryDal;
@@ -40,9 +41,27 @@ namespace CareerPortal.DataAccess.Concrete.EntityFramework.UnitOfWorks
             _context = context;
         }
 
-        public int SaveChanges()
+        public int Commit()
         {
             return _context.SaveChanges();
+        }
+
+        public virtual void Dispose(bool disposing)
+        {
+            if (!this.disposed)
+            {
+                if (disposing)
+                {
+                    _context.Dispose();
+                }
+            }
+
+            this.disposed = true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
         }
     }
 }
