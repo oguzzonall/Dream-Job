@@ -1,6 +1,6 @@
 ﻿namespace CareerPortal.Business.Abstract
 {
-    public class IJobTypeService
+    public interface IJobTypeService
     {
     }
 }

@@ -9,7 +9,7 @@ namespace CareerPortal.WebAPI.Configuration
     {
         public static void AddMyDbContext(this IServiceCollection services, IConfiguration configuration)
         {
-            string connectionString = configuration.GetConnectionString("DefaultConnection");
+            string connectionString = configuration.GetConnectionString("ConnectionStrings:SqlConStr");
 
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
         }

@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Concrete\" />
+    <PackageReference Include="Autofac" Version="5.1.4" />
   </ItemGroup>
 
 </Project>
