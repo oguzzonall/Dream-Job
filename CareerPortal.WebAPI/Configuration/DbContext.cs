@@ -9,9 +9,12 @@ namespace CareerPortal.WebAPI.Configuration
     {
         public static void AddMyDbContext(this IServiceCollection services, IConfiguration configuration)
         {
-            string connectionString = configuration.GetConnectionString("ConnectionStrings:SqlConStr");
+            string connectionString = configuration["ConnectionStrings:SqlConStr"];
 
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString, o =>
+            {
+                o.MigrationsAssembly("CareerPortal.DataAccess");
+            }));
         }
     }
 }

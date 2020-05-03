@@ -30,6 +30,8 @@ namespace CareerPortal.DataAccess.Concrete.EntityFramework.Contexts
             modelBuilder.ApplyConfiguration(new JobTypeConfiguration());
             modelBuilder.ApplyConfiguration(new RegionConfiguration());
             modelBuilder.ApplyConfiguration(new SectorConfiguration());
+
+            modelBuilder.Entity<JobPost>().HasOne(x => x.Region).WithMany().HasForeignKey(x => x.RegionId).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

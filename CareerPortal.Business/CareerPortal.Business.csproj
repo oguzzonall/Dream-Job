@@ -8,4 +8,8 @@
     <PackageReference Include="Autofac" Version="5.1.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CareerPortal.DataAccess\CareerPortal.DataAccess.csproj" />
+  </ItemGroup>
+
 </Project>
