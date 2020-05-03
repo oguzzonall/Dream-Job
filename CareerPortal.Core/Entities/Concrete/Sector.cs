@@ -1,12 +1,11 @@
-﻿using CareerPortal.Core.Entities.Concrete;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace CareerPortal.Entities.Concrete
+namespace CareerPortal.Core.Entities.Concrete
 {
-    public class JobType : Entity
+    public class Sector : Entity
     {
-        public JobType()
+        public Sector()
         {
             JobPosts = new Collection<JobPost>();
         }

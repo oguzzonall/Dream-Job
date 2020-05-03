@@ -1,7 +1,6 @@
-﻿using CareerPortal.Core.Entities.Concrete;
-using System;
+﻿using System;
 
-namespace CareerPortal.Entities.Concrete
+namespace CareerPortal.Core.Entities.Concrete
 {
     public class JobPost : Entity
     {

@@ -1,4 +1,4 @@
-﻿using CareerPortal.Core.DataAccess.Abstract;
+﻿using CareerPortal.Core.DataAccess.Abstract.Repositories;
 using CareerPortal.Core.Entities.Abstract;
 using CareerPortal.DataAccess.Concrete.EntityFramework.Contexts;
 using Microsoft.EntityFrameworkCore;

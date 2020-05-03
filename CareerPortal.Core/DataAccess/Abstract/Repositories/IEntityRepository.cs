@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace CareerPortal.Core.DataAccess.Abstract
+namespace CareerPortal.Core.DataAccess.Abstract.Repositories
 {
     public interface IEntityRepository<T> where T : class, IEntity, new()
     {

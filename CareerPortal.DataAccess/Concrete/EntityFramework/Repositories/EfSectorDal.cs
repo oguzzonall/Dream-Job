@@ -1,6 +1,6 @@
-﻿using CareerPortal.DataAccess.Abstract;
+﻿using CareerPortal.Core.DataAccess.Abstract.Dals;
+using CareerPortal.Core.Entities.Concrete;
 using CareerPortal.DataAccess.Concrete.EntityFramework.Contexts;
-using CareerPortal.Entities.Concrete;
 
 namespace CareerPortal.DataAccess.Concrete.EntityFramework.Repositories
 {

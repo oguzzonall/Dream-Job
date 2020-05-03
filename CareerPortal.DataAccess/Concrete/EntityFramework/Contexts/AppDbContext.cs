@@ -1,5 +1,5 @@
-﻿using CareerPortal.DataAccess.Concrete.EntityFramework.Configurations;
-using CareerPortal.Entities.Concrete;
+﻿using CareerPortal.Core.Entities.Concrete;
+using CareerPortal.DataAccess.Concrete.EntityFramework.Configurations;
 using Microsoft.EntityFrameworkCore;
 
 namespace CareerPortal.DataAccess.Concrete.EntityFramework.Contexts

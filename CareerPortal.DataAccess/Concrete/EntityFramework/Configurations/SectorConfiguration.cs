@@ -1,4 +1,4 @@
-﻿using CareerPortal.Entities.Concrete;
+﻿using CareerPortal.Core.Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

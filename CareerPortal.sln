@@ -3,17 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CareerPortal.Entities", "CareerPortal.Entities\CareerPortal.Entities.csproj", "{0B3F0AB1-4938-4791-ADC1-6C72AE0C09B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CareerPortal.DataAccess", "CareerPortal.DataAccess\CareerPortal.DataAccess.csproj", "{E6D7B3B2-591C-47B8-A26A-AC64B91002DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CareerPortal.DataAccess", "CareerPortal.DataAccess\CareerPortal.DataAccess.csproj", "{E6D7B3B2-591C-47B8-A26A-AC64B91002DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CareerPortal.Business", "CareerPortal.Business\CareerPortal.Business.csproj", "{1D86C06A-80AB-4906-B97C-E7DC3BDBFC08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CareerPortal.Business", "CareerPortal.Business\CareerPortal.Business.csproj", "{1D86C06A-80AB-4906-B97C-E7DC3BDBFC08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CareerPortal.Core", "CareerPortal.Core\CareerPortal.Core.csproj", "{85C82486-2BBC-4244-A900-EEA7C45FD7D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CareerPortal.Core", "CareerPortal.Core\CareerPortal.Core.csproj", "{85C82486-2BBC-4244-A900-EEA7C45FD7D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CareerPortal.WebAPI", "CareerPortal.WebAPI\CareerPortal.WebAPI.csproj", "{3E1A8A61-F857-4053-A27D-17B7B7E92AB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CareerPortal.WebAPI", "CareerPortal.WebAPI\CareerPortal.WebAPI.csproj", "{3E1A8A61-F857-4053-A27D-17B7B7E92AB3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CareerPortal.MvcWebUI", "CareerPortal.MvcWebUI\CareerPortal.MvcWebUI.csproj", "{1EA1112E-0D31-468F-8810-4C3965BC38C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CareerPortal.MvcWebUI", "CareerPortal.MvcWebUI\CareerPortal.MvcWebUI.csproj", "{1EA1112E-0D31-468F-8810-4C3965BC38C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0B3F0AB1-4938-4791-ADC1-6C72AE0C09B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0B3F0AB1-4938-4791-ADC1-6C72AE0C09B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0B3F0AB1-4938-4791-ADC1-6C72AE0C09B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0B3F0AB1-4938-4791-ADC1-6C72AE0C09B4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E6D7B3B2-591C-47B8-A26A-AC64B91002DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E6D7B3B2-591C-47B8-A26A-AC64B91002DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6D7B3B2-591C-47B8-A26A-AC64B91002DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
