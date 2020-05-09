@@ -1,4 +1,5 @@
 ﻿using CareerPortal.Business.Abstract;
+using CareerPortal.Business.Constants;
 using CareerPortal.Core.DataAccess.Abstract.UnitOfWorks;
 using CareerPortal.Core.Entities.Concrete;
 using CareerPortal.Core.Utilities.Results;
@@ -26,7 +27,7 @@ namespace CareerPortal.Business.Concrete
             catch
             {
                 //Loglama
-                return new ErrorDataResult<List<Country>>();
+                return new ErrorDataResult<List<Country>>(Messages.ErrorCountryList);
             }
         }
     }

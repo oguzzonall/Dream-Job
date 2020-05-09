@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-
-namespace CareerPortal.Core.Entities.Concrete
+﻿namespace CareerPortal.Core.Entities.Concrete
 {
     public class Region : Entity
     {

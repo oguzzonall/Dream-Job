@@ -20,6 +20,10 @@ namespace CareerPortal.DataAccess.Concrete.EntityFramework.Contexts
         public DbSet<Region> Regions { get; set; }
         public DbSet<Sector> Sectors { get; set; }
 
+        public DbSet<User> Users { get; set; }
+        public DbSet<OperationClaim> OperationClaims { get; set; }
+        public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new JobPostConfiguration());
@@ -30,6 +34,9 @@ namespace CareerPortal.DataAccess.Concrete.EntityFramework.Contexts
             modelBuilder.ApplyConfiguration(new JobTypeConfiguration());
             modelBuilder.ApplyConfiguration(new RegionConfiguration());
             modelBuilder.ApplyConfiguration(new SectorConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new OperationClaimConfiguration());
+            modelBuilder.ApplyConfiguration(new UserOperationClaimConfiguration());
 
             modelBuilder.Entity<JobPost>().HasOne(x => x.Region).WithMany().HasForeignKey(x => x.RegionId).OnDelete(DeleteBehavior.Restrict);
         }
