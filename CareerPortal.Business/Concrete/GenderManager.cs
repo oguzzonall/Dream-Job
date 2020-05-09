@@ -1,6 +1,8 @@
-﻿namespace CareerPortal.Business.Concrete
+﻿using CareerPortal.Business.Abstract;
+
+namespace CareerPortal.Business.Concrete
 {
-    public class GenderManager
+    public class GenderManager: IGenderService
     {
     }
 }

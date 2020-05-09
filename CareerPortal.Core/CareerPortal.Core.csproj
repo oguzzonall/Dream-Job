@@ -4,4 +4,14 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Dtos\Concrete\Experience\" />
+    <Folder Include="Dtos\Concrete\Gender\" />
+    <Folder Include="Dtos\Concrete\JobPost\" />
+    <Folder Include="Dtos\Concrete\JobPostStatus\" />
+    <Folder Include="Dtos\Concrete\JobType\" />
+    <Folder Include="Dtos\Concrete\Sector\" />
+    <Folder Include="Dtos\Concrete\Region\" />
+  </ItemGroup>
+
 </Project>

@@ -2,7 +2,9 @@
 using CareerPortal.Business.Abstract;
 using CareerPortal.Business.Concrete;
 using CareerPortal.Core.DataAccess.Abstract.Dals;
+using CareerPortal.Core.DataAccess.Abstract.UnitOfWorks;
 using CareerPortal.DataAccess.Concrete.EntityFramework.Repositories;
+using CareerPortal.DataAccess.Concrete.EntityFramework.UnitOfWorks;
 
 namespace CareerPortal.Business.DependencyResolver.Autofac
 {
@@ -33,6 +35,8 @@ namespace CareerPortal.Business.DependencyResolver.Autofac
 
             builder.RegisterType<SectorManager>().As<ISectorService>();
             builder.RegisterType<EfSectorDal>().As<ISectorDal>();
+
+            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>();
         }
     }
 }
