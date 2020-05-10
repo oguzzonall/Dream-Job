@@ -36,6 +36,9 @@ namespace CareerPortal.Business.DependencyResolver.Autofac
             builder.RegisterType<SectorManager>().As<ISectorService>();
             builder.RegisterType<EfSectorDal>().As<ISectorDal>();
 
+            builder.RegisterType<UserManager>().As<IUserService>();
+            builder.RegisterType<EfUserDal>().As<IUserDal>();
+
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>();
         }
     }
