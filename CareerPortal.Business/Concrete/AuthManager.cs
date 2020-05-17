@@ -21,7 +21,22 @@ namespace CareerPortal.Business.Concrete
 
         public IDataResult<User> Register(UserForRegisterDto userForRegisterDto)
         {
-            throw new System.NotImplementedException();
+            byte[] passwordHash, passwordSalt;
+            HashingHelper.CreatePasswordHash(userForRegisterDto.Password, out passwordHash, out passwordSalt);
+            var user = new User
+            {
+                Email = userForRegisterDto.Email,
+                FirstName = userForRegisterDto.FirstName,
+                LastName = userForRegisterDto.LastName,
+                PasswordHash = passwordHash,
+                PasswordSalt = passwordSalt,
+                Status = true
+            };
+            var result = _userService.Add(user);
+            if (result.Success)
+                return new SuccessDataResult<User>(user, Messages.UserRegistered);
+            else
+                return new ErrorDataResult<User>(Messages.UserNotAdded);
         }
 
         public IDataResult<User> Login(UserForLoginDto userForLoginDto)

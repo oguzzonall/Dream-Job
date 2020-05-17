@@ -12,6 +12,7 @@ namespace CareerPortal.Business.Constants
         public static string SuccessfulLogin = "Sisteme Giriş Başarılı.";
         public static string UserAlreadyExists = "Bu Kullanıcı Zaten Mevcut";
         public static string UserRegistered = "Kullanıcı Başarıyla Kayıt Edildi.";
+        public static string UserNotAdded = "Kullanıcı Eklenemedi";
         public static string AccessTokenCreated = "Access Token Başarıyla Oluşturuldu.";
     }
 }
