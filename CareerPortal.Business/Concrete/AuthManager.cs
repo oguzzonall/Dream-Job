@@ -1,5 +1,7 @@
 ﻿using CareerPortal.Business.Abstract;
 using CareerPortal.Business.Constants;
+using CareerPortal.Core.Constants.Enums;
+using CareerPortal.Core.DataAccess.Abstract.UnitOfWorks;
 using CareerPortal.Core.Dtos.Concrete.User;
 using CareerPortal.Core.Entities.Concrete;
 using CareerPortal.Core.Utilities.Results;
@@ -10,16 +12,12 @@ namespace CareerPortal.Business.Concrete
 {
     public class AuthManager : IAuthService
     {
-        private IUserService _userService;
+        private IUnitOfWork _unitOfWork;
         private ITokenHelper _tokenHelper;
+        private IUserService _userService;
 
-        public AuthManager(IUserService userService, ITokenHelper tokenHelper)
-        {
-            _userService = userService;
-            _tokenHelper = tokenHelper;
-        }
 
-        public IDataResult<User> Register(UserForRegisterDto userForRegisterDto)
+        public IDataResult<User> JobSeekerRegister(UserForRegisterDto userForRegisterDto)
         {
             byte[] passwordHash, passwordSalt;
             HashingHelper.CreatePasswordHash(userForRegisterDto.Password, out passwordHash, out passwordSalt);
@@ -32,8 +30,42 @@ namespace CareerPortal.Business.Concrete
                 PasswordSalt = passwordSalt,
                 Status = true
             };
-            var result = _userService.Add(user);
-            if (result.Success)
+            _unitOfWork.userDal.Add(user);
+            var userClaim = new UserOperationClaim
+            {
+                UserId = user.Id,
+                OperationClaimId = (int)EnumOperationClaims.İşArayan
+            };
+            _unitOfWork.userOperationClaimDal.Add(userClaim);
+            int result = _unitOfWork.Commit();
+            if (result > 0)
+                return new SuccessDataResult<User>(user, Messages.UserRegistered);
+            else
+                return new ErrorDataResult<User>(Messages.UserNotAdded);
+        }
+
+        public IDataResult<User> JobGiverRegister(UserForRegisterDto userForRegisterDto)
+        {
+            byte[] passwordHash, passwordSalt;
+            HashingHelper.CreatePasswordHash(userForRegisterDto.Password, out passwordHash, out passwordSalt);
+            var user = new User
+            {
+                Email = userForRegisterDto.Email,
+                FirstName = userForRegisterDto.FirstName,
+                LastName = userForRegisterDto.LastName,
+                PasswordHash = passwordHash,
+                PasswordSalt = passwordSalt,
+                Status = true
+            };
+            _unitOfWork.userDal.Add(user);
+            var userClaim = new UserOperationClaim
+            {
+                UserId = user.Id,
+                OperationClaimId = (int)EnumOperationClaims.İşveren
+            };
+            _unitOfWork.userOperationClaimDal.Add(userClaim);
+            int result = _unitOfWork.Commit();
+            if (result > 0)
                 return new SuccessDataResult<User>(user, Messages.UserRegistered);
             else
                 return new ErrorDataResult<User>(Messages.UserNotAdded);

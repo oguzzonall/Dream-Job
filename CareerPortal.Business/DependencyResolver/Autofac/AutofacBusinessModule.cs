@@ -40,6 +40,8 @@ namespace CareerPortal.Business.DependencyResolver.Autofac
             builder.RegisterType<UserManager>().As<IUserService>();
             builder.RegisterType<EfUserDal>().As<IUserDal>();
 
+            builder.RegisterType<EfUserOperationClaimDal>().As<IUserOperationClaimDal>();
+
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>();
 
             builder.RegisterType<AuthManager>().As<IAuthService>();

@@ -14,6 +14,7 @@ namespace CareerPortal.Core.DataAccess.Abstract.UnitOfWorks
         IRegionDal regionDal { get; }
         ISectorDal sectorDal { get; }
         IUserDal userDal { get; }
+        IUserOperationClaimDal userOperationClaimDal { get; }
         int Commit();
     }
 }

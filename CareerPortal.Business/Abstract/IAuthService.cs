@@ -7,7 +7,8 @@ namespace CareerPortal.Business.Abstract
 {
     public interface IAuthService
     {
-        IDataResult<User> Register(UserForRegisterDto userForRegisterDto);
+        IDataResult<User> JobSeekerRegister(UserForRegisterDto userForRegisterDto);
+        IDataResult<User> JobGiverRegister(UserForRegisterDto userForRegisterDto);
         IDataResult<User> Login(UserForLoginDto userForLoginDto);
         IResult UserExists(string email);
         IDataResult<AccessToken> CreateAccessToken(User user);

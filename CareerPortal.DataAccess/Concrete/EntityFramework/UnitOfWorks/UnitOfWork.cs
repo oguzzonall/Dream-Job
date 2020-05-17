@@ -19,7 +19,7 @@ namespace CareerPortal.DataAccess.Concrete.EntityFramework.UnitOfWorks
         private EfRegionDal _efRegionDal;
         private EfSectorDal _efSectorDal;
         private EfUserDal _efUserDal;
-
+        private EfUserOperationClaimDal _efUserOperationClaimDal;
 
         public ICountryDal countryDal => _efCountryDal = _efCountryDal ?? new EfCountryDal(_context);
 
@@ -39,6 +39,7 @@ namespace CareerPortal.DataAccess.Concrete.EntityFramework.UnitOfWorks
 
         public IUserDal userDal => _efUserDal = _efUserDal ?? new EfUserDal(_context);
 
+        public IUserOperationClaimDal userOperationClaimDal => _efUserOperationClaimDal = _efUserOperationClaimDal ?? new EfUserOperationClaimDal(_context);
 
         public UnitOfWork(AppDbContext context)
         {
