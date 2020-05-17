@@ -1,4 +1,5 @@
 ﻿using CareerPortal.Core.Entities.Concrete;
+using CareerPortal.Core.Extensions;
 using CareerPortal.Core.Utilities.Security.Encryption;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -27,6 +28,7 @@ namespace CareerPortal.Core.Utilities.Security.Jwt
         {
             var securityKey = SecurityKeyHelper.CreateSecurityKey(_tokenOptions.SecurityKey);
             var signingCredentials = SigningCredentialsHelper.CreateSigningCredentials(securityKey);
+            //todo:
             return new AccessToken();
         }
 
@@ -40,16 +42,16 @@ namespace CareerPortal.Core.Utilities.Security.Jwt
                     claims: SetClaims(user, operationClaims),
                     signingCredentials: signingCredentials
                 );
-            return new JwtSecurityToken();
+            return jwt;
         }
 
         private IEnumerable<Claim> SetClaims(User user, List<OperationClaim> operationClaims)
         {
             var claims = new List<Claim>();
-            //claims.AddNameIdentifier(user.Id.ToString());
-            //claims.AddEmail(user.Email);
-            //claims.AddName($"{user.FirstName} {user.LastName}");
-            //claims.AddRoles(operationClaims.Select(x => x.Name).ToArray());
+            claims.AddNameIdentifier(user.Id.ToString());
+            claims.AddEmail(user.Email);
+            claims.AddName($"{user.FirstName} {user.LastName}");
+            claims.AddRoles(operationClaims.Select(r => r.Name).ToArray());
             return claims;
         }
     }
