@@ -66,7 +66,9 @@ namespace CareerPortal.Business.Concrete
 
         public IDataResult<AccessToken> CreateAccessToken(User user)
         {
-            throw new System.NotImplementedException();
+            var claims = _userService.GetClaims(user).Data;
+            var accesstoken = _tokenHelper.CreateToken(user, claims);
+            return new SuccessDataResult<AccessToken>(accesstoken, Messages.AccessTokenCreated);
         }
     }
 }
