@@ -1,7 +1,9 @@
 ﻿using CareerPortal.Business.Abstract;
+using CareerPortal.Business.Constants;
 using CareerPortal.Core.Dtos.Concrete.User;
 using CareerPortal.Core.Entities.Concrete;
 using CareerPortal.Core.Utilities.Results;
+using CareerPortal.Core.Utilities.Security.Hashing;
 using CareerPortal.Core.Utilities.Security.Jwt;
 
 namespace CareerPortal.Business.Concrete
@@ -24,12 +26,27 @@ namespace CareerPortal.Business.Concrete
 
         public IDataResult<User> Login(UserForLoginDto userForLoginDto)
         {
-            throw new System.NotImplementedException();
+            var userToCheck = _userService.GetByMail(userForLoginDto.Email);
+            if (userToCheck.Data == null)
+            {
+                return new ErrorDataResult<User>(Messages.UserNotFound);
+            }
+
+            if (!HashingHelper.VerifyPasswordHash(userForLoginDto.Password, userToCheck.Data.PasswordHash, userToCheck.Data.PasswordSalt))
+            {
+                return new ErrorDataResult<User>(Messages.PasswordError);
+            }
+
+            return new SuccessDataResult<User>(userToCheck.Data, Messages.SuccessfulLogin);
         }
 
         public IResult UserExists(string email)
         {
-            throw new System.NotImplementedException();
+            if (_userService.GetByMail(email) != null)
+            {
+                return new ErrorResult(Messages.UserAlreadyExists);
+            }
+            return new SuccessResult();
         }
 
         public IDataResult<AccessToken> CreateAccessToken(User user)
