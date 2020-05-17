@@ -3,6 +3,7 @@ using CareerPortal.Business.Abstract;
 using CareerPortal.Business.Concrete;
 using CareerPortal.Core.DataAccess.Abstract.Dals;
 using CareerPortal.Core.DataAccess.Abstract.UnitOfWorks;
+using CareerPortal.Core.Utilities.Security.Jwt;
 using CareerPortal.DataAccess.Concrete.EntityFramework.Repositories;
 using CareerPortal.DataAccess.Concrete.EntityFramework.UnitOfWorks;
 
@@ -40,6 +41,9 @@ namespace CareerPortal.Business.DependencyResolver.Autofac
             builder.RegisterType<EfUserDal>().As<IUserDal>();
 
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>();
+
+            builder.RegisterType<AuthManager>().As<IAuthService>();
+            builder.RegisterType<JwtHelper>().As<ITokenHelper>();
         }
     }
 }

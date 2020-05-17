@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CareerPortal.Core.Dtos.Concrete.User
+﻿namespace CareerPortal.Core.Dtos.Concrete.User
 {
     public class UserForRegisterDto : Dto
     {
