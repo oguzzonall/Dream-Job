@@ -2,6 +2,7 @@
 using CareerPortal.Core.DataAccess.Abstract.UnitOfWorks;
 using CareerPortal.DataAccess.Concrete.EntityFramework.Contexts;
 using CareerPortal.DataAccess.Concrete.EntityFramework.Repositories;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace CareerPortal.DataAccess.Concrete.EntityFramework.UnitOfWorks
 {
@@ -46,9 +47,26 @@ namespace CareerPortal.DataAccess.Concrete.EntityFramework.UnitOfWorks
             _context = context;
         }
 
-        public int Commit()
+        public int Save()
         {
             return _context.SaveChanges();
+        }
+
+        //Transaction Tanımladım.
+        IDbContextTransaction transaction;
+        public void BeginTransaction()
+        {
+            transaction = _context.Database.BeginTransaction();
+        }
+
+        public void Commit()
+        {
+            transaction.Commit();
+        }
+
+        public void Rollback()
+        {
+            transaction.Rollback();
         }
 
         public virtual void Dispose(bool disposing)

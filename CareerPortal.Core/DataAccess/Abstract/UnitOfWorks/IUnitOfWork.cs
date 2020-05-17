@@ -15,6 +15,21 @@ namespace CareerPortal.Core.DataAccess.Abstract.UnitOfWorks
         ISectorDal sectorDal { get; }
         IUserDal userDal { get; }
         IUserOperationClaimDal userOperationClaimDal { get; }
-        int Commit();
+
+        /// <summary>
+        /// Transaction Başlat.
+        /// </summary>
+        void BeginTransaction();
+
+        /// <summary>
+        /// Kayıt esnasında bir sorun olmaz ise transaction durdur.
+        /// </summary>
+        void Commit();
+
+        /// <summary>
+        /// Kayıt esnasında bir sorun olursa değişiklikleri geri al.
+        /// </summary>
+        void Rollback();
+        int Save();
     }
 }

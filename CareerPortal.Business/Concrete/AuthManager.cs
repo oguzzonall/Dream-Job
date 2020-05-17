@@ -7,6 +7,7 @@ using CareerPortal.Core.Entities.Concrete;
 using CareerPortal.Core.Utilities.Results;
 using CareerPortal.Core.Utilities.Security.Hashing;
 using CareerPortal.Core.Utilities.Security.Jwt;
+using System;
 
 namespace CareerPortal.Business.Concrete
 {
@@ -16,59 +17,83 @@ namespace CareerPortal.Business.Concrete
         private ITokenHelper _tokenHelper;
         private IUserService _userService;
 
+        public AuthManager(IUnitOfWork unitOfWork, ITokenHelper tokenHelper, IUserService userService)
+        {
+            _unitOfWork = unitOfWork;
+            _tokenHelper = tokenHelper;
+            _userService = userService;
+        }
 
         public IDataResult<User> JobSeekerRegister(UserForRegisterDto userForRegisterDto)
         {
             byte[] passwordHash, passwordSalt;
             HashingHelper.CreatePasswordHash(userForRegisterDto.Password, out passwordHash, out passwordSalt);
-            var user = new User
+            _unitOfWork.BeginTransaction();
+            try
             {
-                Email = userForRegisterDto.Email,
-                FirstName = userForRegisterDto.FirstName,
-                LastName = userForRegisterDto.LastName,
-                PasswordHash = passwordHash,
-                PasswordSalt = passwordSalt,
-                Status = true
-            };
-            _unitOfWork.userDal.Add(user);
-            var userClaim = new UserOperationClaim
-            {
-                UserId = user.Id,
-                OperationClaimId = (int)EnumOperationClaims.İşArayan
-            };
-            _unitOfWork.userOperationClaimDal.Add(userClaim);
-            int result = _unitOfWork.Commit();
-            if (result > 0)
+                var user = new User
+                {
+                    Email = userForRegisterDto.Email,
+                    FirstName = userForRegisterDto.FirstName,
+                    LastName = userForRegisterDto.LastName,
+                    PasswordHash = passwordHash,
+                    PasswordSalt = passwordSalt,
+                    Status = true
+                };
+                _unitOfWork.userDal.Add(user);
+                _unitOfWork.Save();
+
+                var userClaim = new UserOperationClaim
+                {
+                    UserId = user.Id,
+                    OperationClaimId = (int)EnumOperationClaims.İşArayan
+                };
+                _unitOfWork.userOperationClaimDal.Add(userClaim);
+                _unitOfWork.Save();
+                _unitOfWork.Commit();
                 return new SuccessDataResult<User>(user, Messages.UserRegistered);
-            else
-                return new ErrorDataResult<User>(Messages.UserNotAdded);
+            }
+            catch (Exception)
+            {
+                _unitOfWork.Rollback();
+                return new ErrorDataResult<User>(Messages.UserRegistered);
+            }
         }
 
         public IDataResult<User> JobGiverRegister(UserForRegisterDto userForRegisterDto)
         {
             byte[] passwordHash, passwordSalt;
             HashingHelper.CreatePasswordHash(userForRegisterDto.Password, out passwordHash, out passwordSalt);
-            var user = new User
+            _unitOfWork.BeginTransaction();
+            try
             {
-                Email = userForRegisterDto.Email,
-                FirstName = userForRegisterDto.FirstName,
-                LastName = userForRegisterDto.LastName,
-                PasswordHash = passwordHash,
-                PasswordSalt = passwordSalt,
-                Status = true
-            };
-            _unitOfWork.userDal.Add(user);
-            var userClaim = new UserOperationClaim
-            {
-                UserId = user.Id,
-                OperationClaimId = (int)EnumOperationClaims.İşveren
-            };
-            _unitOfWork.userOperationClaimDal.Add(userClaim);
-            int result = _unitOfWork.Commit();
-            if (result > 0)
+                var user = new User
+                {
+                    Email = userForRegisterDto.Email,
+                    FirstName = userForRegisterDto.FirstName,
+                    LastName = userForRegisterDto.LastName,
+                    PasswordHash = passwordHash,
+                    PasswordSalt = passwordSalt,
+                    Status = true
+                };
+                _unitOfWork.userDal.Add(user);
+                _unitOfWork.Save();
+
+                var userClaim = new UserOperationClaim
+                {
+                    UserId = user.Id,
+                    OperationClaimId = (int)EnumOperationClaims.İşveren
+                };
+                _unitOfWork.userOperationClaimDal.Add(userClaim);
+                _unitOfWork.Save();
+                _unitOfWork.Commit();
                 return new SuccessDataResult<User>(user, Messages.UserRegistered);
-            else
-                return new ErrorDataResult<User>(Messages.UserNotAdded);
+            }
+            catch (Exception)
+            {
+                _unitOfWork.Rollback();
+                return new ErrorDataResult<User>(Messages.UserRegistered);
+            }
         }
 
         public IDataResult<User> Login(UserForLoginDto userForLoginDto)
@@ -89,7 +114,7 @@ namespace CareerPortal.Business.Concrete
 
         public IResult UserExists(string email)
         {
-            if (_userService.GetByMail(email) != null)
+            if (_userService.GetByMail(email).Data != null)
             {
                 return new ErrorResult(Messages.UserAlreadyExists);
             }
