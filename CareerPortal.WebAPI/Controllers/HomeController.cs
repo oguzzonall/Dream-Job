@@ -19,6 +19,7 @@ namespace CareerPortal.WebAPI.Controllers
             _mapper = mapper;
         }
 
+        //[Authorize()]
         [HttpGet("getall")]
         public IActionResult GetList()
         {
