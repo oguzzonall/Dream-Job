@@ -4,6 +4,23 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\" />
+    <Folder Include="Areas\HomePage\Data\" />
+    <Folder Include="Areas\HomePage\Models\" />
+    <Folder Include="Areas\JobGiver\Data\" />
+    <Folder Include="Areas\JobGiver\Models\" />
+    <Folder Include="Areas\JobSeeker\Data\" />
+    <Folder Include="Areas\JobSeeker\Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.3" />
+  </ItemGroup>
+
 
 
 </Project>
