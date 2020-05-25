@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CareerPortal.Business.Abstract;
 using CareerPortal.Core.Dtos.Concrete.Country;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -19,7 +20,7 @@ namespace CareerPortal.WebAPI.Controllers
             _mapper = mapper;
         }
 
-        //[Authorize()]
+        [Authorize()]
         [HttpGet("getall")]
         public IActionResult GetList()
         {
