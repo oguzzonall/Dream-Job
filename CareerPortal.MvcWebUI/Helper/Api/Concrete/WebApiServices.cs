@@ -1,5 +1,6 @@
 ﻿using CareerPortal.Core.Dtos.Concrete.User;
 using CareerPortal.Core.Utilities.Security.Jwt;
+using CareerPortal.MvcWebUI.Extensions;
 using CareerPortal.MvcWebUI.Helper.Api.Abstract;
 using Microsoft.AspNetCore.Http;
 using System.Net.Http;
@@ -22,39 +23,47 @@ namespace CareerPortal.MvcWebUI.Helper.Api.Concrete
             SetTokenToClientHeader();
         }
 
-        public Task<string> Get(string serviceUrl)
+        public async Task<string> Get(string serviceUrl)
+        {
+            serviceUrl = baseUrl + serviceUrl;
+            using (HttpResponseMessage response = await _client.GetAsync(serviceUrl))
+            {
+                //if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                //{
+                //    _httpContextAccessor.HttpContext.Response.Redirect("/HomePage/Home/Index");
+                //    //todo: Alertify
+                //}
+                return await response.Content.ReadAsStringAsync();
+            }
+        }
+
+        public async Task<string> Post<T>(string serviceUrl, T instance) where T : class, new()
         {
             serviceUrl = baseUrl + serviceUrl;
             throw new System.NotImplementedException();
         }
 
-        public Task<string> Post<T>(string serviceUrl, T instance) where T : class, new()
-        {
-            serviceUrl = baseUrl + serviceUrl;
-            throw new System.NotImplementedException();
-        }
-
-        public Task<string> GetToken(UserForLoginDto userForLoginDto)
+        public async Task<string> GetToken(UserForLoginDto userForLoginDto)
         {
             throw new System.NotImplementedException();
         }
 
         public void SetTokenToClientHeader()
         {
-            //AccessToken accessToken = _httpContextAccessor.HttpContext.Session.GetObject<AccessToken>("token");
-            //if (accessToken != null)
-            //{
-            //    var headerAuth = _client.DefaultRequestHeaders.Authorization;
-            //    if (headerAuth == null)
-            //    {
-            //        _client.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken.Token);
-            //    }
-            //    else
-            //    {
-            //        _client.DefaultRequestHeaders.Remove("Authorization");
-            //        _client.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken.Token);
-            //    }
-            //}
+            AccessToken accessToken = _httpContextAccessor.HttpContext.Session.GetObject<AccessToken>("token");
+            if (accessToken != null)
+            {
+                var headerAuth = _client.DefaultRequestHeaders.Authorization;
+                if (headerAuth == null)
+                {
+                    _client.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken.Token);
+                }
+                else
+                {
+                    _client.DefaultRequestHeaders.Remove("Authorization");
+                    _client.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken.Token);
+                }
+            }
         }
 
         //public void IsExpirationControl()
@@ -62,12 +71,12 @@ namespace CareerPortal.MvcWebUI.Helper.Api.Concrete
         //    throw new System.NotImplementedException();
         //}
 
-        public Task<string> Put<T>(string serviceUrl, T instance) where T : class, new()
+        public async Task<string> Put<T>(string serviceUrl, T instance) where T : class, new()
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<string> Delete(string serviceUrl)
+        public async Task<string> Delete(string serviceUrl)
         {
             throw new System.NotImplementedException();
         }

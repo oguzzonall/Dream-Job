@@ -22,6 +22,7 @@ namespace CareerPortal.MvcWebUI
             services.AddHttpClient();
             //service
             services.AddMyServices();
+            services.AddSession();
 
             services.AddControllersWithViews();
         }
@@ -43,6 +44,8 @@ namespace CareerPortal.MvcWebUI
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseSession();
 
             app.UseAuthorization();
 
