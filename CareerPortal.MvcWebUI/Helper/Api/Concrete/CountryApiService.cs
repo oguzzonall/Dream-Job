@@ -16,7 +16,7 @@ namespace CareerPortal.MvcWebUI.Helper.Api.Concrete
             _webApiServices = webApiServices;
         }
 
-        public List<CountryDto> GetAllProducts()
+        public List<CountryDto> GetAllCountries()
         {
             jsonData = _webApiServices.Get(ApiUrls.CountryGetAll).Result;
             return JsonConvert.DeserializeObject<List<CountryDto>>(jsonData);

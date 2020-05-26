@@ -31,7 +31,7 @@ namespace CareerPortal.WebAPI
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowOrigin",
-                    builder => builder.WithOrigins("http://localhost:3000", "http://localhost:4200", "https://localhost:44319"));
+                    builder => builder.WithOrigins("http://localhost:3000", "http://localhost:4200", "https://localhost:44359/"));
             });
 
             services.AddMyAuthentication(Configuration);
@@ -45,7 +45,7 @@ namespace CareerPortal.WebAPI
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors(builder => builder.WithOrigins("http://localhost:3000", "http://localhost:4200", "https://localhost:44319").AllowAnyHeader());
+            app.UseCors(builder => builder.WithOrigins("http://localhost:3000", "http://localhost:4200", "https://localhost:44359/").AllowAnyHeader());
             app.UseHttpsRedirection();
 
             app.UseSwagger();

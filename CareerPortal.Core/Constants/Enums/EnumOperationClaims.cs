@@ -3,7 +3,7 @@
     public enum EnumOperationClaims
     {
         Admin = 1,
-        İşveren = 2,
-        İşArayan = 3,
+        Is_Veren = 2,
+        IS_Arayan = 3,
     }
 }

@@ -3,7 +3,9 @@ using CareerPortal.Core.Utilities.Security.Jwt;
 using CareerPortal.MvcWebUI.Extensions;
 using CareerPortal.MvcWebUI.Helper.Api.Abstract;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace CareerPortal.MvcWebUI.Helper.Api.Concrete
@@ -39,12 +41,10 @@ namespace CareerPortal.MvcWebUI.Helper.Api.Concrete
         public async Task<string> Post<T>(string serviceUrl, T instance) where T : class, new()
         {
             serviceUrl = baseUrl + serviceUrl;
-            using (HttpResponseMessage response = await _client.GetAsync(serviceUrl))
+            StringContent httpContent = new StringContent(JsonConvert.SerializeObject(instance), Encoding.UTF8, "application/json");
+            using (HttpResponseMessage response = await _client.PostAsync(serviceUrl, httpContent))
             {
-                if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
-                {
-                    _httpContextAccessor.HttpContext.Response.Redirect("/homepage/home/index");
-                }
+                response.EnsureSuccessStatusCode();
                 return await response.Content.ReadAsStringAsync();
             }
         }

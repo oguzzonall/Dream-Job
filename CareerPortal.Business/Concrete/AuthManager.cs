@@ -46,7 +46,7 @@ namespace CareerPortal.Business.Concrete
                 var userClaim = new UserOperationClaim
                 {
                     UserId = user.Id,
-                    OperationClaimId = (int)EnumOperationClaims.İşArayan
+                    OperationClaimId = (int)EnumOperationClaims.IS_Arayan
                 };
                 _unitOfWork.userOperationClaimDal.Add(userClaim);
                 _unitOfWork.Save();
@@ -82,7 +82,7 @@ namespace CareerPortal.Business.Concrete
                 var userClaim = new UserOperationClaim
                 {
                     UserId = user.Id,
-                    OperationClaimId = (int)EnumOperationClaims.İşveren
+                    OperationClaimId = (int)EnumOperationClaims.Is_Veren
                 };
                 _unitOfWork.userOperationClaimDal.Add(userClaim);
                 _unitOfWork.Save();

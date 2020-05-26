@@ -1,4 +1,5 @@
 using CareerPortal.MvcWebUI.Configuration;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -24,6 +25,7 @@ namespace CareerPortal.MvcWebUI
             services.AddMyServices();
             services.AddSession();
 
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
             services.AddControllersWithViews();
         }
 
@@ -46,6 +48,8 @@ namespace CareerPortal.MvcWebUI
             app.UseRouting();
 
             app.UseSession();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

@@ -8,7 +8,7 @@ namespace CareerPortal.MvcWebUI.Helper.Api.Abstract
 {
     public interface ICountryApiService
     {
-        List<CountryDto> GetAllProducts();
+        List<CountryDto> GetAllCountries();
         //CountryDto GetProduct(int id);
         //string PostProduct(CountryDto Product);
     }

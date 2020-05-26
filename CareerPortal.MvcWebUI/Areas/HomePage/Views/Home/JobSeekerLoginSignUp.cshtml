@@ -24,7 +24,20 @@
             <div class="col-lg-6 mb-5">
                 <h2 class="mb-4">Sign Up To JobBoard</h2>
                 <form asp-controller="Home" asp-action="JobSeekerSignUp" asp-area="HomePage" method="post" class="p-4 border rounded">
-
+                    <div class="row form-group">
+                        <div class="col-md-12 mb-3 mb-md-0">
+                            <label class="text-black" asp-for="JobSeekerSignUpModel.FirstName">First Name</label>
+                            <input asp-for="JobSeekerSignUpModel.FirstName" class="form-control" placeholder="First Name">
+                            <span asp-validation-for="JobSeekerSignUpModel.FirstName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-12 mb-3 mb-md-0">
+                            <label class="text-black" asp-for="JobSeekerSignUpModel.LastName">Last Name</label>
+                            <input asp-for="JobSeekerSignUpModel.LastName" class="form-control" placeholder="Last Name">
+                            <span asp-validation-for="JobSeekerSignUpModel.LastName" class="text-danger"></span>
+                        </div>
+                    </div>
                     <div class="row form-group">
                         <div class="col-md-12 mb-3 mb-md-0">
                             <label class="text-black" asp-for="JobSeekerSignUpModel.Email">Email</label>
