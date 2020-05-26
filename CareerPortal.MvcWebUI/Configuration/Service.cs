@@ -12,6 +12,7 @@ namespace CareerPortal.MvcWebUI.Configuration
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddScoped<IWebApiServices, WebApiServices>();
+            services.AddScoped<ICountryApiService, CountryApiService>();
         }
     }
 }

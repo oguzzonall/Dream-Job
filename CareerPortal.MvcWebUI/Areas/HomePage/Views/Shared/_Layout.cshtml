@@ -56,12 +56,12 @@
                             <li><a asp-action="Services" asp-controller="Home" asp-area="HomePage">Servisler</a></li>
                             <li><a asp-action="Contact" asp-controller="Home" asp-area="HomePage">İletişim</a></li>
                             @*<li class="has-children">
-                                <a href="job-listings.html">Job Listings</a>
-                                <ul class="dropdown">
-                                    <li><a href="job-single.html">Job Single</a></li>
-                                    <li><a asp-action="PostAJob" asp-controller="Job" asp-area="JobGiver"><span class="mr-2">+</span> Post a Job</a></li>
-                                </ul>
-                            </li>*@
+                                    <a href="job-listings.html">Job Listings</a>
+                                    <ul class="dropdown">
+                                        <li><a href="job-single.html">Job Single</a></li>
+                                        <li><a asp-action="PostAJob" asp-controller="Job" asp-area="JobGiver"><span class="mr-2">+</span> Post a Job</a></li>
+                                    </ul>
+                                </li>*@
                             @*<li class="has-children">
                                     <a href="services.html">Pages</a>
                                     <ul class="dropdown">
@@ -81,8 +81,8 @@
 
                     <div class="right-cta-menu text-right d-flex aligin-items-center col-6">
                         <div class="ml-auto">
-                            <a asp-action="JobSeekerLogin" asp-controller="Home" asp-area="HomePage" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-add"></span>İş Veren</a>
-                            <a asp-action="JobGiverLogin" asp-controller="Home" asp-area="HomePage" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>İş Arayan</a>
+                            <a asp-action="JobGiverLoginSignUp" asp-controller="Home" asp-area="HomePage" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-add"></span>İş Veren</a>
+                            <a asp-action="JobSeekerLoginSignUp" asp-controller="Home" asp-area="HomePage" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>İş Arayan</a>
                         </div>
                         <a href="#" class="site-menu-toggle js-menu-toggle d-inline-block d-xl-none mt-lg-2 ml-3"><span class="icon-menu h3 m-0 p-0 mt-2"></span></a>
                     </div>
@@ -171,7 +171,8 @@
     <script src="/jobboard/js/quill.min.js"></script>
 
     <script src="/jobboard/js/bootstrap-select.min.js"></script>
-
+    <script src="/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     <script src="/jobboard/js/custom.js"></script>
     @RenderSection("Scripts", false)
 

@@ -28,11 +28,10 @@ namespace CareerPortal.MvcWebUI.Helper.Api.Concrete
             serviceUrl = baseUrl + serviceUrl;
             using (HttpResponseMessage response = await _client.GetAsync(serviceUrl))
             {
-                //if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
-                //{
-                //    _httpContextAccessor.HttpContext.Response.Redirect("/HomePage/Home/Index");
-                //    //todo: Alertify
-                //}
+                if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    _httpContextAccessor.HttpContext.Response.Redirect("/homepage/home/index");
+                }
                 return await response.Content.ReadAsStringAsync();
             }
         }
@@ -40,13 +39,20 @@ namespace CareerPortal.MvcWebUI.Helper.Api.Concrete
         public async Task<string> Post<T>(string serviceUrl, T instance) where T : class, new()
         {
             serviceUrl = baseUrl + serviceUrl;
-            throw new System.NotImplementedException();
+            using (HttpResponseMessage response = await _client.GetAsync(serviceUrl))
+            {
+                if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    _httpContextAccessor.HttpContext.Response.Redirect("/homepage/home/index");
+                }
+                return await response.Content.ReadAsStringAsync();
+            }
         }
 
-        public async Task<string> GetToken(UserForLoginDto userForLoginDto)
-        {
-            throw new System.NotImplementedException();
-        }
+        //public async Task<string> GetToken(UserForLoginDto userForLoginDto)
+        //{
+        //    throw new System.NotImplementedException();
+        //}
 
         public void SetTokenToClientHeader()
         {
@@ -71,14 +77,14 @@ namespace CareerPortal.MvcWebUI.Helper.Api.Concrete
         //    throw new System.NotImplementedException();
         //}
 
-        public async Task<string> Put<T>(string serviceUrl, T instance) where T : class, new()
-        {
-            throw new System.NotImplementedException();
-        }
+        //public async Task<string> Put<T>(string serviceUrl, T instance) where T : class, new()
+        //{
+        //    throw new System.NotImplementedException();
+        //}
 
-        public async Task<string> Delete(string serviceUrl)
-        {
-            throw new System.NotImplementedException();
-        }
+        //public async Task<string> Delete(string serviceUrl)
+        //{
+        //    throw new System.NotImplementedException();
+        //}
     }
 }

@@ -1,4 +1,4 @@
-﻿
+﻿@model JobSeekerLoginSignUpViewModel
 @{
     ViewData["Title"] = "JobSeekerLogin";
     Layout = "~/Areas/HomePage/Views/Shared/_Layout.cshtml";
@@ -23,24 +23,27 @@
         <div class="row">
             <div class="col-lg-6 mb-5">
                 <h2 class="mb-4">Sign Up To JobBoard</h2>
-                <form action="#" class="p-4 border rounded">
+                <form asp-controller="Home" asp-action="JobSeekerSignUp" asp-area="HomePage" method="post" class="p-4 border rounded">
 
                     <div class="row form-group">
                         <div class="col-md-12 mb-3 mb-md-0">
-                            <label class="text-black" for="fname">Email</label>
-                            <input type="text" id="fname" class="form-control" placeholder="Email address">
+                            <label class="text-black" asp-for="JobSeekerSignUpModel.Email">Email</label>
+                            <input asp-for="JobSeekerSignUpModel.Email" class="form-control" placeholder="Email address">
+                            <span asp-validation-for="JobSeekerSignUpModel.Email" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col-md-12 mb-3 mb-md-0">
-                            <label class="text-black" for="fname">Password</label>
-                            <input type="password" id="fname" class="form-control" placeholder="Password">
+                            <label class="text-black" asp-for="JobSeekerSignUpModel.Password">Password</label>
+                            <input type="password" asp-for="JobSeekerSignUpModel.Password" class="form-control" placeholder="Password">
+                            <span asp-validation-for="JobSeekerSignUpModel.Password" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="row form-group mb-4">
                         <div class="col-md-12 mb-3 mb-md-0">
-                            <label class="text-black" for="fname">Re-Type Password</label>
-                            <input type="password" id="fname" class="form-control" placeholder="Re-type Password">
+                            <label class="text-black" asp-for="JobSeekerSignUpModel.ConfirmPassword">Re-Type Password</label>
+                            <input type="password" asp-for="JobSeekerSignUpModel.ConfirmPassword" class="form-control" placeholder="Re-type Password">
+                            <span asp-validation-for="JobSeekerSignUpModel.ConfirmPassword" class="text-danger"></span>
                         </div>
                     </div>
 
@@ -54,18 +57,20 @@
             </div>
             <div class="col-lg-6">
                 <h2 class="mb-4">Log In To JobBoard</h2>
-                <form action="#" class="p-4 border rounded">
+                <form asp-controller="Home" asp-action="JobSeekerSignUp" asp-area="HomePage" method="post" class="p-4 border rounded">
 
                     <div class="row form-group">
                         <div class="col-md-12 mb-3 mb-md-0">
-                            <label class="text-black" for="fname">Email</label>
-                            <input type="text" id="fname" class="form-control" placeholder="Email address">
+                            <label class="text-black" asp-for="JobSeekerLoginModel.Email">Email</label>
+                            <input asp-for="JobSeekerLoginModel.Email" class="form-control" placeholder="Email address">
+                            <span asp-validation-for="JobSeekerLoginModel.Email" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="row form-group mb-4">
                         <div class="col-md-12 mb-3 mb-md-0">
-                            <label class="text-black" for="fname">Password</label>
-                            <input type="password" id="fname" class="form-control" placeholder="Password">
+                            <label class="text-black" asp-for="JobSeekerLoginModel.Password">Password</label>
+                            <input type="password" asp-for="JobSeekerLoginModel.Password" class="form-control" placeholder="Password">
+                            <span asp-validation-for="JobSeekerLoginModel.Password" class="text-danger"></span>
                         </div>
                     </div>
 

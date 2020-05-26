@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CareerPortal.MvcWebUI.Areas.HomePage.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CareerPortal.MvcWebUI.Areas.HomePage.Controllers
 {
@@ -30,12 +31,37 @@ namespace CareerPortal.MvcWebUI.Areas.HomePage.Controllers
             return View();
         }
 
+        public IActionResult JobSeekerLoginSignUp()
+        {
+            JobSeekerLoginSignUpViewModel model = new JobSeekerLoginSignUpViewModel();
+            return View(model);
+        }
+
+        [HttpPost]
         public IActionResult JobSeekerLogin()
         {
             return View();
         }
 
+        [HttpPost]
+        public IActionResult JobSeekerSignUp(JobSeekerLoginSignUpViewModel model)
+        {
+            return View();
+        }
+
+        public IActionResult JobGiverLoginSignUp()
+        {
+            return View();
+        }
+
+        [HttpPost]
         public IActionResult JobGiverLogin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult JobGiverSignUp()
         {
             return View();
         }
