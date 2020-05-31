@@ -1,4 +1,4 @@
-﻿
+﻿@model JobGiverLoginSignUpViewModel
 @{
     ViewData["Title"] = "JobGiverLogin";
     Layout = "~/Areas/HomePage/Views/Shared/_Layout.cshtml";
@@ -22,62 +22,74 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 mb-5">
-                <h2 class="mb-4">Sign Up To JobBoard</h2>
-                <form action="#" class="p-4 border rounded">
-
+                <h2 class="mb-4">Üye Ol</h2>
+                <form asp-action="JobGiverSignUp" asp-controller="Home" asp-area="HomePage" class="p-4 border rounded">
                     <div class="row form-group">
                         <div class="col-md-12 mb-3 mb-md-0">
-                            <label class="text-black" for="fname">Email</label>
-                            <input type="text" id="fname" class="form-control" placeholder="Email address">
+                            <label class="text-black" asp-for="JobGiverSignUpModel.FirstName">Ad</label>
+                            <input asp-for="JobGiverSignUpModel.FirstName" class="form-control" placeholder="Ad" required>
+                            <span asp-validation-for="JobGiverSignUpModel.FirstName" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col-md-12 mb-3 mb-md-0">
-                            <label class="text-black" for="fname">Password</label>
-                            <input type="password" id="fname" class="form-control" placeholder="Password">
+                            <label class="text-black" asp-for="JobGiverSignUpModel.LastName">Soyad</label>
+                            <input asp-for="JobGiverSignUpModel.LastName" class="form-control" placeholder="Soyad" required>
+                            <span asp-validation-for="JobGiverSignUpModel.LastName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-12 mb-3 mb-md-0">
+                            <label class="text-black" asp-for="JobGiverSignUpModel.Email">Email</label>
+                            <input type="text" asp-for="JobGiverSignUpModel.Email" class="form-control" placeholder="Email Adresi">
+                            <span asp-validation-for="JobGiverSignUpModel.Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-12 mb-3 mb-md-0">
+                            <label class="text-black" asp-for="JobGiverSignUpModel.Password">Password</label>
+                            <input type="password" asp-for="JobGiverSignUpModel.Password" class="form-control" placeholder="Şifre">
+                            <span asp-validation-for="JobGiverSignUpModel.Password" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="row form-group mb-4">
                         <div class="col-md-12 mb-3 mb-md-0">
-                            <label class="text-black" for="fname">Re-Type Password</label>
-                            <input type="password" id="fname" class="form-control" placeholder="Re-type Password">
+                            <label class="text-black" asp-for="JobGiverSignUpModel.ConfirmPassword">Re-Type Password</label>
+                            <input type="password" asp-for="JobGiverSignUpModel.Password" class="form-control" placeholder="Şifre Tekrar">
+                            <span asp-validation-for="JobGiverSignUpModel.Password" class="text-danger"></span>
                         </div>
                     </div>
-
                     <div class="row form-group">
                         <div class="col-md-12">
                             <input type="submit" value="Sign Up" class="btn px-4 btn-primary text-white">
                         </div>
                     </div>
-
                 </form>
             </div>
             <div class="col-lg-6">
-                <h2 class="mb-4">Log In To JobBoard</h2>
-                <form action="#" class="p-4 border rounded">
-
+                <h2 class="mb-4">Giriş Yap</h2>
+                <form asp-action="JobGiverLogin" asp-controller="Home" asp-area="HomePage" class="p-4 border rounded">
                     <div class="row form-group">
                         <div class="col-md-12 mb-3 mb-md-0">
-                            <label class="text-black" for="fname">Email</label>
-                            <input type="text" id="fname" class="form-control" placeholder="Email address">
+                            <label class="text-black" asp-for="JobGiverLoginModel.Email">Email</label>
+                            <input type="text" asp-for="JobGiverSignUpModel.Email" class="form-control" placeholder="Email address">
+                            <span asp-validation-for="JobGiverLoginModel.Email" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="row form-group mb-4">
                         <div class="col-md-12 mb-3 mb-md-0">
-                            <label class="text-black" for="fname">Password</label>
-                            <input type="password" id="fname" class="form-control" placeholder="Password">
+                            <label class="text-black" asp-for="JobGiverLoginModel.Password">Password</label>
+                            <input type="password" asp-for="JobGiverLoginModel.Password" class="form-control" placeholder="Password">
+                            <span asp-validation-for="JobGiverLoginModel.Password" class="text-danger"></span>
                         </div>
                     </div>
-
                     <div class="row form-group">
                         <div class="col-md-12">
                             <input type="submit" value="Log In" class="btn px-4 btn-primary text-white">
                         </div>
                     </div>
-
                 </form>
             </div>
         </div>
     </div>
 </section>
-

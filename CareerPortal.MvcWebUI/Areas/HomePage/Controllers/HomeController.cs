@@ -26,26 +26,6 @@ namespace CareerPortal.MvcWebUI.Areas.HomePage.Controllers
             return View();
         }
 
-        public IActionResult About()
-        {
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            return View();
-        }
-
-        public IActionResult Services()
-        {
-            return View();
-        }
-
-        public IActionResult Blog()
-        {
-            return View();
-        }
-
         public IActionResult JobSeekerLoginSignUp()
         {
             JobSeekerLoginSignUpViewModel model = new JobSeekerLoginSignUpViewModel();
@@ -62,7 +42,7 @@ namespace CareerPortal.MvcWebUI.Areas.HomePage.Controllers
                 return RedirectToAction("JobSeekerLoginSignUp");
             }
             var identity = new ClaimsIdentity(new[] {
-                    new Claim(ClaimTypes.Name, model.JobSeekerSignUpModel.Email),
+                    new Claim(ClaimTypes.Name, model.JobSeekerLoginModel.Email),
                     new Claim(ClaimTypes.Role, OperationClaimNames.Is_Arayan)
                 }, CookieAuthenticationDefaults.AuthenticationScheme);
             var principal = new ClaimsPrincipal(identity);
@@ -96,19 +76,73 @@ namespace CareerPortal.MvcWebUI.Areas.HomePage.Controllers
             return RedirectToAction("Index", "Home", new { area = "JobSeeker" });
         }
 
+        [HttpGet]
         public IActionResult JobGiverLoginSignUp()
         {
-            return View();
+            JobGiverLoginSignUpViewModel model = new JobGiverLoginSignUpViewModel();
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult JobGiverLogin()
+        public IActionResult JobGiverLogin(JobGiverLoginSignUpViewModel model)
+        {
+            var response = _authApiService.JobGiverLogin(model.JobGiverLoginModel);
+            if (!response.Success)
+            {
+                //todo: Alertify respose.message
+                return RedirectToAction("JobSeekerLoginSignUp");
+            }
+            var identity = new ClaimsIdentity(new[] {
+                    new Claim(ClaimTypes.Name, model.JobGiverLoginModel.Email),
+                    new Claim(ClaimTypes.Role, OperationClaimNames.Is_Veren)
+                }, CookieAuthenticationDefaults.AuthenticationScheme);
+            var principal = new ClaimsPrincipal(identity);
+
+            var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+            _tokenSessionHelper.SetToken(response.Data);
+            //todo: Alertify
+            return RedirectToAction("Index", "Home", new { area = "JobGiver" });
+        }
+
+        [HttpPost]
+        public IActionResult JobGiverSignUp(JobGiverLoginSignUpViewModel model)
+        {
+            var response = _authApiService.JobGiverSignUp(model.JobGiverSignUpModel);
+            if (!response.Success)
+            {
+                //todo: Alertify respose.message
+                return RedirectToAction("JobGiverLoginSignUp");
+            }
+            var identity = new ClaimsIdentity(new[] {
+                    new Claim(ClaimTypes.Name, model.JobGiverSignUpModel.Email),
+                    new Claim(ClaimTypes.Role, OperationClaimNames.Is_Veren)
+                }, CookieAuthenticationDefaults.AuthenticationScheme);
+            var principal = new ClaimsPrincipal(identity);
+
+            var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+            _tokenSessionHelper.SetToken(response.Data);
+            //todo: Alertify
+            return RedirectToAction("Index", "Home", new { area = "JobGiver" });
+        }
+
+        public IActionResult About()
         {
             return View();
         }
 
-        [HttpPost]
-        public IActionResult JobGiverSignUp()
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
+        public IActionResult Services()
+        {
+            return View();
+        }
+
+        public IActionResult Blog()
         {
             return View();
         }

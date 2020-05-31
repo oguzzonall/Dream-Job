@@ -1,5 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerUI;
 using System.Collections.Generic;
 
 namespace CareerPortal.WebAPI.Configuration
@@ -38,6 +40,20 @@ namespace CareerPortal.WebAPI.Configuration
                     }
                 });
             });
+        }
+
+        public static IApplicationBuilder UseMySwagger(this IApplicationBuilder app)
+        {
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "JobDream.Api V1");
+                c.DocumentTitle = "Title";
+                c.DisplayOperationId();
+                c.DocExpansion(DocExpansion.None);
+
+            });
+            return app;
         }
     }
 }

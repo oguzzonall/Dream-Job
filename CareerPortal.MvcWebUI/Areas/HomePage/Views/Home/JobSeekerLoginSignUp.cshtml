@@ -22,80 +22,74 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 mb-5">
-                <h2 class="mb-4">Sign Up To JobBoard</h2>
+                <h2 class="mb-4">Üye Ol</h2>
                 <form asp-controller="Home" asp-action="JobSeekerSignUp" asp-area="HomePage" method="post" class="p-4 border rounded">
                     <div class="row form-group">
                         <div class="col-md-12 mb-3 mb-md-0">
-                            <label class="text-black" asp-for="JobSeekerSignUpModel.FirstName">First Name</label>
-                            <input asp-for="JobSeekerSignUpModel.FirstName" class="form-control" placeholder="First Name">
+                            <label class="text-black" asp-for="JobSeekerSignUpModel.FirstName">Ad</label>
+                            <input asp-for="JobSeekerSignUpModel.FirstName" class="form-control" placeholder="Ad" required>
                             <span asp-validation-for="JobSeekerSignUpModel.FirstName" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col-md-12 mb-3 mb-md-0">
-                            <label class="text-black" asp-for="JobSeekerSignUpModel.LastName">Last Name</label>
-                            <input asp-for="JobSeekerSignUpModel.LastName" class="form-control" placeholder="Last Name">
+                            <label class="text-black" asp-for="JobSeekerSignUpModel.LastName">Soyad</label>
+                            <input asp-for="JobSeekerSignUpModel.LastName" class="form-control" placeholder="Soyad" required>
                             <span asp-validation-for="JobSeekerSignUpModel.LastName" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col-md-12 mb-3 mb-md-0">
                             <label class="text-black" asp-for="JobSeekerSignUpModel.Email">Email</label>
-                            <input asp-for="JobSeekerSignUpModel.Email" class="form-control" placeholder="Email address">
+                            <input asp-for="JobSeekerSignUpModel.Email" class="form-control" placeholder="Email Adresi" required>
                             <span asp-validation-for="JobSeekerSignUpModel.Email" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col-md-12 mb-3 mb-md-0">
-                            <label class="text-black" asp-for="JobSeekerSignUpModel.Password">Password</label>
-                            <input type="password" asp-for="JobSeekerSignUpModel.Password" class="form-control" placeholder="Password">
+                            <label class="text-black" asp-for="JobSeekerSignUpModel.Password">Şifre</label>
+                            <input type="password" asp-for="JobSeekerSignUpModel.Password" class="form-control" placeholder="Şifre" required>
                             <span asp-validation-for="JobSeekerSignUpModel.Password" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="row form-group mb-4">
                         <div class="col-md-12 mb-3 mb-md-0">
-                            <label class="text-black" asp-for="JobSeekerSignUpModel.ConfirmPassword">Re-Type Password</label>
-                            <input type="password" asp-for="JobSeekerSignUpModel.ConfirmPassword" class="form-control" placeholder="Re-type Password">
+                            <label class="text-black" asp-for="JobSeekerSignUpModel.ConfirmPassword">Şifre Tekrar</label>
+                            <input type="password" asp-for="JobSeekerSignUpModel.ConfirmPassword" class="form-control" placeholder="Şifre Tekrar" required>
                             <span asp-validation-for="JobSeekerSignUpModel.ConfirmPassword" class="text-danger"></span>
                         </div>
                     </div>
-
                     <div class="row form-group">
                         <div class="col-md-12">
                             <input type="submit" value="Sign Up" class="btn px-4 btn-primary text-white">
                         </div>
                     </div>
-
                 </form>
             </div>
             <div class="col-lg-6">
-                <h2 class="mb-4">Log In To JobBoard</h2>
-                <form asp-controller="Home" asp-action="JobSeekerSignUp" asp-area="HomePage" method="post" class="p-4 border rounded">
-
+                <h2 class="mb-4">Giriş Yap</h2>
+                <form asp-controller="Home" asp-action="JobSeekerLogin" asp-area="HomePage" method="post" class="p-4 border rounded">
                     <div class="row form-group">
                         <div class="col-md-12 mb-3 mb-md-0">
                             <label class="text-black" asp-for="JobSeekerLoginModel.Email">Email</label>
-                            <input asp-for="JobSeekerLoginModel.Email" class="form-control" placeholder="Email address">
+                            <input asp-for="JobSeekerLoginModel.Email" class="form-control" placeholder="Email Adresi">
                             <span asp-validation-for="JobSeekerLoginModel.Email" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="row form-group mb-4">
                         <div class="col-md-12 mb-3 mb-md-0">
-                            <label class="text-black" asp-for="JobSeekerLoginModel.Password">Password</label>
-                            <input type="password" asp-for="JobSeekerLoginModel.Password" class="form-control" placeholder="Password">
+                            <label class="text-black" asp-for="JobSeekerLoginModel.Password">Şifre</label>
+                            <input type="password" asp-for="JobSeekerLoginModel.Password" class="form-control" placeholder="Şifre">
                             <span asp-validation-for="JobSeekerLoginModel.Password" class="text-danger"></span>
                         </div>
                     </div>
-
                     <div class="row form-group">
                         <div class="col-md-12">
                             <input type="submit" value="Log In" class="btn px-4 btn-primary text-white">
                         </div>
                     </div>
-
                 </form>
             </div>
         </div>
     </div>
 </section>
-

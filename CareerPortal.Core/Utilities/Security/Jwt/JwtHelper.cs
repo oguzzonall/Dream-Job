@@ -37,6 +37,7 @@ namespace CareerPortal.Core.Utilities.Security.Jwt
                 Expiration = _accessTokenExpiration
             };
         }
+        //        public JwtSecurityToken(string issuer = null, string audience = null, IEnumerable<Claim> claims = null, DateTime? notBefore = null, DateTime? expires = null, SigningCredentials signingCredentials = null);
 
         public JwtSecurityToken CreateJwtSecurityToken(TokenOptions tokenOptions, User user, SigningCredentials signingCredentials, List<OperationClaim> operationClaims)
         {

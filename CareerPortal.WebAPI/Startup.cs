@@ -48,14 +48,7 @@ namespace CareerPortal.WebAPI
             app.UseCors(builder => builder.WithOrigins("http://localhost:3000", "http://localhost:4200", "https://localhost:44359/").AllowAnyHeader());
             app.UseHttpsRedirection();
 
-            app.UseSwagger();
-
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
-            // specifying the Swagger JSON endpoint.
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-            });
+            app.UseMySwagger();
 
             app.UseRouting();
 
