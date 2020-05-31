@@ -13,17 +13,26 @@ namespace CareerPortal.MvcWebUI.Areas.HomePage.Controllers
     public class HomeController : Controller
     {
         private IAuthApiService _authApiService;
+        private IHomeApiService _homeApiService;
         private ITokenSessionHelper _tokenSessionHelper;
 
-        public HomeController(IAuthApiService authApiService, ITokenSessionHelper tokenSessionHelper)
+        public HomeController(IAuthApiService authApiService, IHomeApiService homeApiService, ITokenSessionHelper tokenSessionHelper)
         {
             _authApiService = authApiService;
+            _homeApiService = homeApiService;
             _tokenSessionHelper = tokenSessionHelper;
         }
 
         public IActionResult Index()
         {
-            return View();
+            HomeIndexViewModel model = new HomeIndexViewModel();
+            model.JobFilterComponents = _homeApiService.GetHomeFilterComponents().Data;
+            //if(!response.Success)
+            //{
+            //    //message:
+            //return View();  
+            //}
+            return View(model);
         }
 
         public IActionResult JobSeekerLoginSignUp()

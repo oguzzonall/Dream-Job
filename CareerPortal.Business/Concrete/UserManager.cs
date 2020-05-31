@@ -2,7 +2,6 @@
 using CareerPortal.Core.DataAccess.Abstract.UnitOfWorks;
 using CareerPortal.Core.Entities.Concrete;
 using CareerPortal.Core.Utilities.Results;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 

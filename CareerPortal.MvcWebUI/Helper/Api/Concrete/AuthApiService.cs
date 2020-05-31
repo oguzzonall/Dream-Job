@@ -1,4 +1,4 @@
-﻿using CareerPortal.MvcWebUI.Areas.HomePage.Data;
+﻿using CareerPortal.MvcWebUI.Areas.HomePage.Data.Concrete;
 using CareerPortal.MvcWebUI.Areas.HomePage.Models;
 using CareerPortal.MvcWebUI.Constants;
 using CareerPortal.MvcWebUI.Helper.Api.Abstract;

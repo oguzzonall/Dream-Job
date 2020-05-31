@@ -1,4 +1,4 @@
-﻿using CareerPortal.MvcWebUI.Areas.HomePage.Data;
+﻿using CareerPortal.MvcWebUI.Areas.HomePage.Data.Concrete;
 using CareerPortal.MvcWebUI.Areas.HomePage.Models;
 
 namespace CareerPortal.MvcWebUI.Helper.Api.Abstract

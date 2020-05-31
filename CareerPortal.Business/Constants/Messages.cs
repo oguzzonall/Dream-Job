@@ -6,6 +6,9 @@ namespace CareerPortal.Business.Constants
     {
         public static string SuccessCountryList = "Ülkeler Listelendi.";
         public static string ErrorCountryList = "Ülkeler Listelenirken Hata İle Karşılaşıldı!";
+        public static string ErrorRegionList = "Şehirler Listelenirken Hata İle Karşılaşıldı!";
+        public static string ErrorJobTypeList = "Çalışma Şekli Listelenirken Hata İle Karşılaşıldı!";
+
 
         public static string UserNotFound = "Kullanıcı Bulunamadı.";
         public static string PasswordError = "Şifre Hatalı";

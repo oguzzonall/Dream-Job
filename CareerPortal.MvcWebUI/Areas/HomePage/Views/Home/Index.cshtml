@@ -1,4 +1,4 @@
-﻿
+﻿@model HomeIndexViewModel
 @{
     ViewData["Title"] = "Index";
     Layout = "/Areas/HomePage/Views/Shared/_Layout.cshtml";
@@ -14,32 +14,27 @@
                     <h1 class="text-white font-weight-bold">Hayalinizdeki işi almanın en kolay yolu</h1>
                     <p>İş arayan ve İş verenlerin ortak buluşma noktası</p>
                 </div>
-                <form method="post" class="search-jobs-form">
+                <form asp-action="Index" asp-controller="Home" asp-area="HomePage" method="post" class="search-jobs-form">
                     <div class="row mb-5">
                         <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
                             <input type="text" class="form-control form-control-lg" placeholder="Job title, Company...">
                         </div>
                         <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                            <select class="selectpicker" data-style="btn-white btn-lg" data-width="100%" data-live-search="true" title="Select Region">
-                                <option>Anywhere</option>
-                                <option>San Francisco</option>
-                                <option>Palo Alto</option>
-                                <option>New York</option>
-                                <option>Manhattan</option>
-                                <option>Ontario</option>
-                                <option>Toronto</option>
-                                <option>Kansas</option>
-                                <option>Mountain View</option>
+                            <select class="selectpicker" data-style="btn-white btn-lg" data-width="100%" data-live-search="true" title="Select Region"
+                                    asp-for="RegionId"
+                                    asp-items="@(new SelectList(Model.JobFilterComponents.Regions,"Id","Name"))">
+                                <option selected>Seçiniz</option>
                             </select>
                         </div>
                         <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                            <select class="selectpicker" data-style="btn-white btn-lg" data-width="100%" data-live-search="true" title="Select Job Type">
-                                <option>Part Time</option>
-                                <option>Full Time</option>
+                            <select class="selectpicker" data-style="btn-white btn-lg" data-width="100%" data-live-search="true" title="Select Job Type"
+                                asp-for="RegionId"
+                                asp-items="@(new SelectList(Model.JobFilterComponents.JobTypes, "Id", "Name"))">
+                                <option selected>Seçiniz</option>
                             </select>
                         </div>
                         <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                            <button type="submit" class="btn btn-primary btn-lg btn-block text-white btn-search"><span class="icon-search icon mr-2"></span>Search Job</button>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block text-white btn-search"><span class="icon-search icon mr-2"></span>İŞ Ara</button>
                         </div>
                     </div>
                     <div class="row">

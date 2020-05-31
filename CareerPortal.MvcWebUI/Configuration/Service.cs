@@ -20,7 +20,7 @@ namespace CareerPortal.MvcWebUI.Configuration
             services.AddScoped<IWebApiServices, WebApiServices>();
             services.AddScoped<ICountryApiService, CountryApiService>();
             services.AddScoped<IAuthApiService, AuthApiService>();
-
+            services.AddScoped<IHomeApiService, HomeApiService>();
             services.AddScoped<ITokenSessionHelper, TokenSessionHelper>();
         }
     }
