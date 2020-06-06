@@ -72,14 +72,14 @@
                     <div class="row form-group">
                         <div class="col-md-12 mb-3 mb-md-0">
                             <label class="text-black" asp-for="JobGiverLoginModel.Email">Email</label>
-                            <input type="text" asp-for="JobGiverSignUpModel.Email" class="form-control" placeholder="Email address">
+                            <input type="text" asp-for="JobGiverLoginModel.Email" class="form-control" placeholder="Email Adresi" required>
                             <span asp-validation-for="JobGiverLoginModel.Email" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="row form-group mb-4">
                         <div class="col-md-12 mb-3 mb-md-0">
                             <label class="text-black" asp-for="JobGiverLoginModel.Password">Password</label>
-                            <input type="password" asp-for="JobGiverLoginModel.Password" class="form-control" placeholder="Password">
+                            <input type="password" asp-for="JobGiverLoginModel.Password" class="form-control" placeholder="Şifre" required>
                             <span asp-validation-for="JobGiverLoginModel.Password" class="text-danger"></span>
                         </div>
                     </div>

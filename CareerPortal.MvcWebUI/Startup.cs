@@ -1,10 +1,12 @@
 using CareerPortal.MvcWebUI.Configuration;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Reflection;
 
 namespace CareerPortal.MvcWebUI
 {
@@ -26,7 +28,9 @@ namespace CareerPortal.MvcWebUI
             services.AddSession();
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
-            services.AddControllersWithViews();
+            services.AddControllersWithViews()
+                .AddFluentValidation(option =>
+                option.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
