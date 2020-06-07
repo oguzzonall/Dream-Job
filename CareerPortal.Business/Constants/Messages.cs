@@ -1,6 +1,4 @@
-﻿using CareerPortal.Core.Entities.Concrete;
-
-namespace CareerPortal.Business.Constants
+﻿namespace CareerPortal.Business.Constants
 {
     public static class Messages
     {

@@ -1,4 +1,5 @@
-﻿
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
 <!doctype html>
 <html lang="en">
 <head>
@@ -18,6 +19,8 @@
     <link rel="stylesheet" href="/jobboard/css/owl.carousel.min.css">
     <link rel="stylesheet" href="/jobboard/css/animate.min.css">
     <link rel="stylesheet" href="/jobboard/css/quill.snow.css">
+    <link href="~/lib/AlertifyJS/css/alertify.min.css" rel="stylesheet" />
+    <link href="~/lib/AlertifyJS/css/themes/default.min.css" rel="stylesheet" />
 
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="/jobboard/css/style.css">
@@ -174,8 +177,13 @@
     <script src="/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     <script src="/jobboard/js/custom.js"></script>
+    <script src="/lib/AlertifyJS/alertify.min.js"></script>
     @RenderSection("Scripts", false)
-
+    @if (!string.IsNullOrEmpty(HttpContextAccessor.HttpContext.Session.GetString("Alert")))
+    {
+        @Html.Raw(HttpContextAccessor.HttpContext.Session.GetString("Alert").ToString())
+        HttpContextAccessor.HttpContext.Session.SetString("Alert", "");
+    }
 
 </body>
 </html>

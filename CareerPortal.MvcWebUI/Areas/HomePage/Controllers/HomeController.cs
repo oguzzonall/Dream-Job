@@ -1,9 +1,11 @@
 ﻿using CareerPortal.MvcWebUI.Areas.HomePage.Models;
 using CareerPortal.MvcWebUI.Constants;
+using CareerPortal.MvcWebUI.Helper.Alert.AlertifyJs;
 using CareerPortal.MvcWebUI.Helper.Api.Abstract;
 using CareerPortal.MvcWebUI.Helper.Session.Abstract;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -47,7 +49,7 @@ namespace CareerPortal.MvcWebUI.Areas.HomePage.Controllers
             var response = _authApiService.JobSeekerLogin(model.JobSeekerLoginModel);
             if (!response.Success)
             {
-                //todo: Alertify respose.message
+                HttpContext.Session.SetString("Alert", AlertifyHelper.ErrorMessage(response.Message));
                 return RedirectToAction("JobSeekerLoginSignUp");
             }
             var identity = new ClaimsIdentity(new[] {
@@ -59,6 +61,8 @@ namespace CareerPortal.MvcWebUI.Areas.HomePage.Controllers
             var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
             _tokenSessionHelper.SetToken(response.Data);
+            HttpContext.Session.SetString("Alert", AlertifyHelper.SuccessMessage(Messages.SuccessLogin));
+
             //todo: Alertify
             return RedirectToAction("Index", "Home", new { area = "JobSeeker" });
         }
@@ -69,7 +73,7 @@ namespace CareerPortal.MvcWebUI.Areas.HomePage.Controllers
             var response = _authApiService.JobSeekerSignUp(model.JobSeekerSignUpModel);
             if (!response.Success)
             {
-                //todo: Alertify respose.message
+                HttpContext.Session.SetString("Alert", AlertifyHelper.ErrorMessage(response.Message));
                 return RedirectToAction("JobSeekerLoginSignUp");
             }
             var identity = new ClaimsIdentity(new[] {
@@ -81,6 +85,7 @@ namespace CareerPortal.MvcWebUI.Areas.HomePage.Controllers
             var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
             _tokenSessionHelper.SetToken(response.Data);
+            HttpContext.Session.SetString("Alert", AlertifyHelper.SuccessMessage(Messages.SuccessRegister));
             //todo: Alertify
             return RedirectToAction("Index", "Home", new { area = "JobSeeker" });
         }
@@ -98,7 +103,7 @@ namespace CareerPortal.MvcWebUI.Areas.HomePage.Controllers
             var response = _authApiService.JobGiverLogin(model.JobGiverLoginModel);
             if (!response.Success)
             {
-                //todo: Alertify respose.message
+                HttpContext.Session.SetString("Alert", AlertifyHelper.ErrorMessage(response.Message));
                 return RedirectToAction("JobSeekerLoginSignUp");
             }
             var identity = new ClaimsIdentity(new[] {
@@ -110,7 +115,7 @@ namespace CareerPortal.MvcWebUI.Areas.HomePage.Controllers
             var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
             _tokenSessionHelper.SetToken(response.Data);
-            //todo: Alertify
+            HttpContext.Session.SetString("Alert", AlertifyHelper.SuccessMessage(Messages.SuccessLogin));
             return RedirectToAction("Index", "Home", new { area = "JobGiver" });
         }
 
@@ -120,7 +125,7 @@ namespace CareerPortal.MvcWebUI.Areas.HomePage.Controllers
             var response = _authApiService.JobGiverSignUp(model.JobGiverSignUpModel);
             if (!response.Success)
             {
-                //todo: Alertify respose.message
+                HttpContext.Session.SetString("Alert", AlertifyHelper.ErrorMessage(response.Message));
                 return RedirectToAction("JobGiverLoginSignUp");
             }
             var identity = new ClaimsIdentity(new[] {
@@ -132,7 +137,7 @@ namespace CareerPortal.MvcWebUI.Areas.HomePage.Controllers
             var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
             _tokenSessionHelper.SetToken(response.Data);
-            //todo: Alertify
+            HttpContext.Session.SetString("Alert", AlertifyHelper.SuccessMessage(Messages.SuccessRegister));
             return RedirectToAction("Index", "Home", new { area = "JobGiver" });
         }
 
