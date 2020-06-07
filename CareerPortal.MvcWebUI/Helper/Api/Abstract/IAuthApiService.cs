@@ -5,9 +5,9 @@ namespace CareerPortal.MvcWebUI.Helper.Api.Abstract
 {
     public interface IAuthApiService
     {
-        LoginResponse JobSeekerSignUp(JobSeekerSignUpModel jobSeekerSignUpModel);
-        RegisterResponse JobSeekerLogin(JobSeekerLoginModel jobSeekerLoginModel);
-        LoginResponse JobGiverSignUp(JobGiverSignUpModel jobSeekerSignUpModel);
-        RegisterResponse JobGiverLogin(JobGiverLoginModel jobSeekerLoginModel);
+        RegisterResponse JobSeekerSignUp(JobSeekerSignUpModel jobSeekerSignUpModel);
+        LoginResponse JobSeekerLogin(JobSeekerLoginModel jobSeekerLoginModel);
+        RegisterResponse JobGiverSignUp(JobGiverSignUpModel jobSeekerSignUpModel);
+        LoginResponse JobGiverLogin(JobGiverLoginModel jobSeekerLoginModel);
     }
 }

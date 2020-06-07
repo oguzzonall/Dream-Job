@@ -27,14 +27,14 @@ namespace CareerPortal.WebAPI.Controllers
             var userToLogin = _authService.Login(userForLoginDto);
             if (!userToLogin.Success)
             {
-                return BadRequest(userToLogin);
+                return Ok(userToLogin);
             }
             var result = _authService.CreateAccessToken(userToLogin.Data);
             if (result.Success)
             {
                 return Ok(result);
             }
-            return BadRequest(result);
+            return Ok(result);
         }
 
         [HttpPost("jobseekerregister")]
@@ -43,13 +43,13 @@ namespace CareerPortal.WebAPI.Controllers
             var userExists = _authService.UserExists(userForRegisterDto.Email);
             if (!userExists.Success)
             {
-                return BadRequest(userExists);
+                return Ok(userExists);
             }
 
             var registerResult = _authService.JobSeekerRegister(userForRegisterDto);
             if (!registerResult.Success)
             {
-                return BadRequest(registerResult);
+                return Ok(registerResult);
             }
 
             var result = _authService.CreateAccessToken(registerResult.Data);
@@ -57,7 +57,7 @@ namespace CareerPortal.WebAPI.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result);
+            return Ok(result);
         }
 
         [HttpPost("jobgiverregister")]
@@ -66,13 +66,13 @@ namespace CareerPortal.WebAPI.Controllers
             var userExists = _authService.UserExists(userForRegisterDto.Email);
             if (!userExists.Success)
             {
-                return BadRequest(userExists);
+                return Ok(userExists);
             }
 
             var registerResult = _authService.JobGiverRegister(userForRegisterDto);
             if (!registerResult.Success)
             {
-                return BadRequest(userExists);
+                return Ok(userExists);
             }
 
             var result = _authService.CreateAccessToken(registerResult.Data);
@@ -80,7 +80,7 @@ namespace CareerPortal.WebAPI.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result);
+            return Ok(result);
         }
     }
 }

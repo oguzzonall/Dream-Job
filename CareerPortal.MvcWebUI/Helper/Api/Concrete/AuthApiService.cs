@@ -16,28 +16,28 @@ namespace CareerPortal.MvcWebUI.Helper.Api.Concrete
             _webApiServices = webApiServices;
         }
 
-        public RegisterResponse JobSeekerLogin(JobSeekerLoginModel JobSeekerSignUpModel)
+        public LoginResponse JobSeekerLogin(JobSeekerLoginModel JobSeekerSignUpModel)
         {
             jsonData = _webApiServices.Post<JobSeekerLoginModel>(ApiUrls.JobSeekerLogin, JobSeekerSignUpModel).Result;
-            return JsonConvert.DeserializeObject<RegisterResponse>(jsonData);
+            return JsonConvert.DeserializeObject<LoginResponse>(jsonData);
         }
 
-        public LoginResponse JobSeekerSignUp(JobSeekerSignUpModel JobSeekerSignUpModel)
+        public RegisterResponse JobSeekerSignUp(JobSeekerSignUpModel JobSeekerSignUpModel)
         {
             jsonData = _webApiServices.Post<JobSeekerSignUpModel>(ApiUrls.JobSeekerRegister, JobSeekerSignUpModel).Result;
-            return JsonConvert.DeserializeObject<LoginResponse>(jsonData);
-        }
-
-        public RegisterResponse JobGiverLogin(JobGiverLoginModel jobGiverLoginModel)
-        {
-            jsonData = _webApiServices.Post<JobGiverLoginModel>(ApiUrls.JobGiverLogin, jobGiverLoginModel).Result;
             return JsonConvert.DeserializeObject<RegisterResponse>(jsonData);
         }
 
-        public LoginResponse JobGiverSignUp(JobGiverSignUpModel jobGiverSignUpModel)
+        public LoginResponse JobGiverLogin(JobGiverLoginModel jobGiverLoginModel)
+        {
+            jsonData = _webApiServices.Post<JobGiverLoginModel>(ApiUrls.JobGiverLogin, jobGiverLoginModel).Result;
+            return JsonConvert.DeserializeObject<LoginResponse>(jsonData);
+        }
+
+        public RegisterResponse JobGiverSignUp(JobGiverSignUpModel jobGiverSignUpModel)
         {
             jsonData = _webApiServices.Post<JobGiverSignUpModel>(ApiUrls.JobGiverRegister, jobGiverSignUpModel).Result;
-            return JsonConvert.DeserializeObject<LoginResponse>(jsonData);
+            return JsonConvert.DeserializeObject<RegisterResponse>(jsonData);
 
             //try
             //{
