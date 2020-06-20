@@ -6,6 +6,10 @@
         public static string ErrorCountryList = "Ülkeler Listelenirken Hata İle Karşılaşıldı!";
         public static string ErrorRegionList = "Şehirler Listelenirken Hata İle Karşılaşıldı!";
         public static string ErrorJobTypeList = "Çalışma Şekli Listelenirken Hata İle Karşılaşıldı!";
+        public static string ErrorSectorList = "Sektörler Listelenirken Hata İle Karşılaşıldı!";
+        public static string ErrorExperienceList = "Tecrübe Yılları Listelenirken Hata İle Karşılaşıldı!";
+        public static string ErrorGenderList = "Cinsiyetler Listelenirken Hata İle Karşılaşıldı!";
+
 
 
         public static string UserNotFound = "Kullanıcı Bulunamadı.";

@@ -5,5 +5,6 @@ namespace CareerPortal.MvcWebUI.Helper.Api.Abstract
     public interface IHomeApiService
     {
         HomeFilterComponentsResponse GetHomeFilterComponents();
+        GetSectorExperienceYearGenderResponse GetSectorExperienceYearGender();
     }
 }

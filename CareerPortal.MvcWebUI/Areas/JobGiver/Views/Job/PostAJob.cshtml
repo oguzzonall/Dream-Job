@@ -1,4 +1,4 @@
-﻿
+﻿@model PostAJobViewModel
 @{
     ViewData["Title"] = "PostAJob";
     Layout = "~/Areas/JobGiver/Views/Shared/_Layout.cshtml";
@@ -12,7 +12,7 @@
                 <div class="custom-breadcrumbs">
                     <a asp-action="Index" asp-controller="Home" asp-area="JobGiver">Anasayfa</a> <span class="mx-2 slash">/</span>
                     <a asp-action="Index" asp-controller="Job" asp-area="JobGiver">Job</a> <span class="mx-2 slash">/</span>
-                    <span class="text-white"><strong>Post a Job</strong></span>
+                    <span class="text-white"><strong>İlan Yayınla</strong></span>
                 </div>
             </div>
         </div>
@@ -21,12 +21,11 @@
 
 <section class="site-section">
     <div class="container">
-
         <div class="row align-items-center mb-5">
             <div class="col-lg-8 mb-4 mb-lg-0">
                 <div class="d-flex align-items-center">
                     <div>
-                        <h2>Post A Job</h2>
+                        <h2>İlan Yayınla</h2>
                     </div>
                 </div>
             </div>
@@ -36,124 +35,140 @@
                         <a href="#" class="btn btn-block btn-light btn-md"><span class="icon-open_in_new mr-2"></span>Preview</a>
                     </div>
                     <div class="col-6">
-                        <a href="#" class="btn btn-block btn-primary btn-md">Save Job</a>
+                        <a href="#" class="btn btn-block btn-primary btn-md">İlanı Yayınla</a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row mb-5">
             <div class="col-lg-12">
-                <form class="p-4 p-md-5 border rounded" method="post">
-                    <h3 class="text-black mb-5 border-bottom pb-2">Job Details</h3>
+                <form asp-action="PostAJob" asp-controller="Job" asp-area="JobGiver" class="p-4 p-md-5 border rounded" method="post" enctype="multipart/form-data" id="PostAJobForm">
+                    <h3 class="text-black mb-5 border-bottom pb-2">İlan Detayı</h3>
+                    <input type="hidden" asp-for="JobDescription" />
+                    <input type="hidden" asp-for="CompanyDescription" />
 
                     <div class="form-group">
-                        <label for="company-website-tw d-block">Upload Featured Image</label> <br>
+                        <label asp-for="JobPostImage" for="company-website-tw d-block">İlan Resmi</label> <br>
                         <label class="btn btn-primary btn-md btn-file">
-                            Browse File<input type="file" hidden>
+                            Resim Seç<input asp-for="JobPostImage" hidden>
                         </label>
                     </div>
 
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="text" class="form-control" id="email" placeholder="you@yourdomain.com">
+                        <label asp-for="Email">Email</label>
+                        <input asp-for="Email" class="form-control" placeholder="Email">
                     </div>
                     <div class="form-group">
-                        <label for="job-title">Job Title</label>
-                        <input type="text" class="form-control" id="job-title" placeholder="Product Designer">
-                    </div>
-                    <div class="form-group">
-                        <label for="job-location">Location</label>
-                        <input type="text" class="form-control" id="job-location" placeholder="e.g. New York">
+                        <label asp-for="JobTitle">İlan Başlığı</label>
+                        <input asp-for="JobTitle" class="form-control" id="job-title" placeholder="İlan Başlığı" required>
                     </div>
 
                     <div class="form-group">
                         <label for="job-region">Job Region</label>
-                        <select class="selectpicker border rounded" id="job-region" data-style="btn-black" data-width="100%" data-live-search="true" title="Select Region">
-                            <option>Anywhere</option>
-                            <option>San Francisco</option>
-                            <option>Palo Alto</option>
-                            <option>New York</option>
-                            <option>Manhattan</option>
-                            <option>Ontario</option>
-                            <option>Toronto</option>
-                            <option>Kansas</option>
-                            <option>Mountain View</option>
+                        <select class="selectpicker border rounded" data-style="btn-black" data-width="100%" data-live-search="true" title="Şehir Şeç" required
+                                asp-for="RegionId"
+                                asp-items="@(new SelectList(Model.JobFilterComponents.Regions,"Id","Name"))">
+                            <option selected>Seçiniz</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="job-type">Job Type</label>
-                        <select class="selectpicker border rounded" id="job-type" data-style="btn-black" data-width="100%" data-live-search="true" title="Select Job Type">
-                            <option>Part Time</option>
-                            <option>Full Time</option>
+                        <select class="selectpicker border rounded" id="job-type" data-style="btn-black" data-width="100%" data-live-search="true" title="Select Job Type" required
+                                asp-for="JobTypeId"
+                                asp-items="@(new SelectList(Model.JobFilterComponents.JobTypes, "Id", "Name"))">
+                            <option selected>Seçiniz</option>
                         </select>
                     </div>
 
+                    <div class="form-group">
+                        <label for="job-region">Sector</label>
+                        <select class="selectpicker border rounded" data-style="btn-black" data-width="100%" data-live-search="true" title="Şehir Şeç" required
+                                asp-for="SectorId"
+                                asp-items="@(new SelectList(Model.GetSectorExperienceYearGenderDtos.Sectors,"Id","Name"))">
+                            <option selected>Seçiniz</option>
+                        </select>
+                    </div>
 
                     <div class="form-group">
-                        <label for="job-description">Job Description</label>
+                        <label for="job-region">Experience Year(Min)</label>
+                        <select class="selectpicker border rounded" data-style="btn-black" data-width="100%" data-live-search="true" title="Şehir Şeç" required
+                                asp-for="ExperienceId"
+                                asp-items="@(new SelectList(Model.GetSectorExperienceYearGenderDtos.Experiences,"Id","ExperienceYear"))">
+                            <option selected>Seçiniz</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="job-region">Gender</label>
+                        <select class="selectpicker border rounded" data-style="btn-black" data-width="100%" data-live-search="true" title="Şehir Şeç" required
+                                asp-for="GenderId"
+                                asp-items="@(new SelectList(Model.GetSectorExperienceYearGenderDtos.Genders,"Id","GenderName"))">
+                            <option selected>Seçiniz</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="JobDescription">Job Description</label>
                         <div class="editor" id="editor-1">
                             <p>Write Job Description!</p>
                         </div>
                     </div>
 
-
                     <h3 class="text-black my-5 border-bottom pb-2">Company Details</h3>
                     <div class="form-group">
-                        <label for="company-name">Company Name</label>
-                        <input type="text" class="form-control" id="company-name" placeholder="e.g. New York">
+                        <label asp-for="CompanyName">Firma Adı</label>
+                        <input asp-for="CompanyName" class="form-control" placeholder="Firma Adı" required>
                     </div>
 
-                    <div class="form-group">
-                        <label for="company-tagline">Tagline (Optional)</label>
-                        <input type="text" class="form-control" id="company-tagline" placeholder="e.g. New York">
-                    </div>
+                    @*<div class="form-group">
+                            <label for="company-tagline">Tagline (Optional)</label>
+                            <input type="text" class="form-control" id="company-tagline" placeholder="e.g. New York">
+                        </div>*@
 
                     <div class="form-group">
-                        <label for="job-description">Company Description (Optional)</label>
+                        <label asp-for="CompanyDescription">Firma Açıklaması (Optional)</label>
                         <div class="editor" id="editor-2">
-                            <p>Description</p>
+                            <p>Firma Hakkında Açıklama</p>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="company-website">Website (Optional)</label>
-                        <input type="text" class="form-control" id="company-website" placeholder="https://">
+                        <label asp-for="WebSite">Website (Optional)</label>
+                        <input asp-for="WebSite" class="form-control" placeholder="https://">
                     </div>
 
                     <div class="form-group">
-                        <label for="company-website-fb">Facebook Username (Optional)</label>
-                        <input type="text" class="form-control" id="company-website-fb" placeholder="companyname">
+                        <label asp-for="FacebookUrl">Facebook Username (Optional)</label>
+                        <input asp-for="FacebookUrl" class="form-control" placeholder="https://">
                     </div>
 
                     <div class="form-group">
-                        <label for="company-website-tw">Twitter Username (Optional)</label>
-                        <input type="text" class="form-control" id="company-website-tw" placeholder="companyname">
+                        <label asp-for="TwitterUrl">Twitter Username (Optional)</label>
+                        <input asp-for="TwitterUrl" class="form-control" placeholder="https://">
                     </div>
                     <div class="form-group">
-                        <label for="company-website-tw">Linkedin Username (Optional)</label>
-                        <input type="text" class="form-control" id="company-website-tw" placeholder="companyname">
+                        <label asp-for="LinkedinUrl">Linkedin Username (Optional)</label>
+                        <input asp-for="LinkedinUrl" class="form-control" placeholder="https://">
                     </div>
 
                     <div class="form-group">
-                        <label for="company-website-tw d-block">Upload Logo</label> <br>
+                        <label asp-for="ComponyLogo">Firma Logo</label> <br>
                         <label class="btn btn-primary btn-md btn-file">
-                            Browse File<input type="file" hidden>
+                            Resim Seç<input asp-for="ComponyLogo" hidden>
                         </label>
                     </div>
-
                 </form>
             </div>
         </div>
         <div class="row align-items-center mb-5">
-
             <div class="col-lg-4 ml-auto">
                 <div class="row">
                     <div class="col-6">
-                        <a href="#" class="btn btn-block btn-light btn-md"><span class="icon-open_in_new mr-2"></span>Preview</a>
+                        <a href="#" class="btn btn-block btn-light btn-md"><span class="icon-open_in_new mr-2"></span>Ön İzle (Yakında)</a>
                     </div>
                     <div class="col-6">
-                        <a href="#" class="btn btn-block btn-primary btn-md">Save Job</a>
+                        <button onclick="postAJob();" class="btn btn-block btn-primary btn-md">İlanı Yayınla</button>
                     </div>
                 </div>
             </div>
@@ -161,3 +176,46 @@
     </div>
 </section>
 
+<script>
+    function postAJob() {
+        var container = $('#editor-1').get(0);
+        var JobDescription = new Quill(container).root.innerHTML;
+        $("#JobDescription").val(JobDescription);
+
+        var container = $('#editor-2').get(0);
+        var CompanyDescription = new Quill(container).root.innerHTML;
+        $("#CompanyDescription").val(CompanyDescription);
+
+        $("#PostAJobForm").submit();
+
+        //var data = new FormData();
+        //var JobPostImage = $("#JobPostImage")[0].files[0];
+        //var ComponyLogo = $("#ComponyLogo")[0].files[0];
+        //var Email = $("#Email").val();
+
+        //data.append("JobPostImage", JobPostImage);
+        //data.append("ComponyLogo", ComponyLogo);
+        //data.append("JobDescription", JobDescription);
+        //data.append("CompanyDescription", CompanyDescription);
+        //data.append("Email", Email);
+
+        //$.ajax({
+        //    type: "POST",
+        //    url: "/JobGiver/Job/PostAJob",
+        //    data: data,
+        //    cache: false,
+        //    processData: false,
+        //    contentType: false
+        //}).done(function (e) {
+        //    if (e === true) {
+        //        $("#tr-" + id).remove();
+        //        funcCreateNewPOst();
+        //        toastr.success("Tebrikler", "Silme işleminiz başarılı.");
+        //    } else {
+        //        toastr.error("Başarısız", "Silme işlemi başarılı olamadı.");
+        //    }
+        //}).fail(function () {
+        //    alert("Sunucu ile bağlantı kesildi");
+        //});
+    }
+</script>

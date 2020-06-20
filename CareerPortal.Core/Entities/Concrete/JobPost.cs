@@ -22,7 +22,5 @@ namespace CareerPortal.Core.Entities.Concrete
         public virtual JobPostStatus JobPostStatus { get; set; }
         public virtual Gender Gender { get; set; }
         public virtual Country Country { get; set; }
-
-
     }
 }

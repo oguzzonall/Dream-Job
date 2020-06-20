@@ -10,5 +10,6 @@
         public const string JobGiverLogin = "api/Auth/login";
 
         public const string GetHomePageFilterComponents = "api/home/gethomepagefiltercomponents";
+        public const string GetSectorExperienceYearGender = "api/home/getsectorexperienceyeargender";
     }
 }

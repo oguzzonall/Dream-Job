@@ -10,7 +10,6 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\" />
     <Folder Include="Areas\JobGiver\Data\" />
-    <Folder Include="Areas\JobGiver\Models\" />
     <Folder Include="Areas\JobSeeker\Data\" />
     <Folder Include="Areas\JobSeeker\Models\" />
   </ItemGroup>
