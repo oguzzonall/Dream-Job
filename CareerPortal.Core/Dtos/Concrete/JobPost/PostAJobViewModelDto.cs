@@ -1,16 +1,13 @@
-﻿using CareerPortal.Core.Dtos.Concrete.General;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 
-namespace CareerPortal.MvcWebUI.Areas.JobGiver.Models
+namespace CareerPortal.Core.Dtos.Concrete.JobPost
 {
-    public class PostAJobViewModel
+    public class PostAJobViewModelDto : Dto
     {
-        public IFormFile JobPostImage { set; get; }
+        public string JobPostImageBase64 { set; get; }
         public string JobPostImageUrl { get; set; }
         public string Email { get; set; }
         public string JobTitle { get; set; }
-        public GetHomePageFilterComponentsDto JobFilterComponents { get; set; }
-        public GetSectorExperienceYearGenderDto GetSectorExperienceYearGenderDtos { get; set; }
         public int RegionId { get; set; }
         public int JobTypeId { get; set; }
         public int SectorId { get; set; }
@@ -23,7 +20,7 @@ namespace CareerPortal.MvcWebUI.Areas.JobGiver.Models
         public string FacebookUrl { get; set; }
         public string TwitterUrl { get; set; }
         public string LinkedinUrl { get; set; }
-        public IFormFile ComponyLogo { get; set; }
+        public string ComponyLogoBase64 { get; set; }
         public string ComponyLogoUrl { get; set; }
     }
 }

@@ -14,6 +14,14 @@ namespace CareerPortal.DataAccess.Concrete.EntityFramework.Configurations
             builder.Property(x => x.JobPostTitle).IsRequired().HasMaxLength(100);
             builder.Property(x => x.JobPostDescription).IsRequired();
             builder.Property(x => x.ReleaseDate).IsRequired();
+
+            builder.Property(x => x.WebSiteUrl).HasMaxLength(50);
+            builder.Property(x => x.FacebookUrl).HasMaxLength(50);
+            builder.Property(x => x.TwitterUrl).HasMaxLength(50);
+            builder.Property(x => x.LinkedinUrl).HasMaxLength(50);
+
+            builder.Property(x => x.JobPostImageUrl).HasMaxLength(100);
+            builder.Property(x => x.ComponyLogoUrl).HasMaxLength(100);
         }
     }
 }

@@ -11,5 +11,8 @@
 
         public const string GetHomePageFilterComponents = "api/home/gethomepagefiltercomponents";
         public const string GetSectorExperienceYearGender = "api/home/getsectorexperienceyeargender";
+
+        public const string AddJobPost = "api/JobGiverJobs/addjobpost";
+
     }
 }

@@ -4,14 +4,16 @@ using CareerPortal.DataAccess.Concrete.EntityFramework.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CareerPortal.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200620190302_JobPostTableUpdate")]
+    partial class JobPostTableUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,18 +93,13 @@ namespace CareerPortal.DataAccess.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ComponyLogoUrl")
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CountryId")
                         .HasColumnType("int");
 
                     b.Property<int>("ExperienceId")
                         .HasColumnType("int");
-
-                    b.Property<string>("FacebookUrl")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
 
                     b.Property<int>("GenderId")
                         .HasColumnType("int");
@@ -112,8 +109,7 @@ namespace CareerPortal.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("JobPostImageUrl")
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("JobPostStatusId")
                         .HasColumnType("int");
@@ -126,10 +122,6 @@ namespace CareerPortal.DataAccess.Migrations
                     b.Property<int>("JobTypeId")
                         .HasColumnType("int");
 
-                    b.Property<string>("LinkedinUrl")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
                     b.Property<int>("RegionId")
                         .HasColumnType("int");
 
@@ -138,14 +130,6 @@ namespace CareerPortal.DataAccess.Migrations
 
                     b.Property<int>("SectorId")
                         .HasColumnType("int");
-
-                    b.Property<string>("TwitterUrl")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.Property<string>("WebSiteUrl")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
 
                     b.HasKey("Id");
 

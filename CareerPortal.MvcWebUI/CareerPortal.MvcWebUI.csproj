@@ -9,12 +9,16 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\" />
-    <Folder Include="Areas\JobGiver\Data\" />
     <Folder Include="Areas\JobSeeker\Data\" />
     <Folder Include="Areas\JobSeeker\Models\" />
+    <Folder Include="images\" />
+    <Folder Include="wwwroot\jobimages\" />
+    <Folder Include="wwwroot\companyimages\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="FluentValidation" Version="8.6.2" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="8.6.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.3" />

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace CareerPortal.Core.Dtos.Concrete.General
 {
-    public class GetSectorExperienceYearGenderDto
+    public class GetSectorExperienceYearGenderDto:Dto
     {
         public List<SectorDto> Sectors { get; set; }
         public List<ExperienceDto> Experiences { get; set; }

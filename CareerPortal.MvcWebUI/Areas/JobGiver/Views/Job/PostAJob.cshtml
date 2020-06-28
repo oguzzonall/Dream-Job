@@ -44,7 +44,7 @@
             <div class="col-lg-12">
                 <form asp-action="PostAJob" asp-controller="Job" asp-area="JobGiver" class="p-4 p-md-5 border rounded" method="post" enctype="multipart/form-data" id="PostAJobForm">
                     <h3 class="text-black mb-5 border-bottom pb-2">İlan Detayı</h3>
-                    <input type="hidden" asp-for="JobDescription" />
+                    <input type="hidden" asp-for="JobDescription" required />
                     <input type="hidden" asp-for="CompanyDescription" />
 
                     <div class="form-group">
@@ -52,15 +52,18 @@
                         <label class="btn btn-primary btn-md btn-file">
                             Resim Seç<input asp-for="JobPostImage" hidden>
                         </label>
+                        <span asp-validation-for="JobPostImage" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
                         <label asp-for="Email">Email</label>
-                        <input asp-for="Email" class="form-control" placeholder="Email">
+                        <input asp-for="Email" class="form-control" placeholder="Email" required>
+                        <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="JobTitle">İlan Başlığı</label>
                         <input asp-for="JobTitle" class="form-control" id="job-title" placeholder="İlan Başlığı" required>
+                        <span asp-validation-for="JobTitle" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
@@ -70,6 +73,7 @@
                                 asp-items="@(new SelectList(Model.JobFilterComponents.Regions,"Id","Name"))">
                             <option selected>Seçiniz</option>
                         </select>
+                        <span asp-validation-for="RegionId" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
@@ -79,6 +83,7 @@
                                 asp-items="@(new SelectList(Model.JobFilterComponents.JobTypes, "Id", "Name"))">
                             <option selected>Seçiniz</option>
                         </select>
+                        <span asp-validation-for="JobTypeId" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
@@ -88,6 +93,7 @@
                                 asp-items="@(new SelectList(Model.GetSectorExperienceYearGenderDtos.Sectors,"Id","Name"))">
                             <option selected>Seçiniz</option>
                         </select>
+                        <span asp-validation-for="SectorId" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
@@ -97,6 +103,7 @@
                                 asp-items="@(new SelectList(Model.GetSectorExperienceYearGenderDtos.Experiences,"Id","ExperienceYear"))">
                             <option selected>Seçiniz</option>
                         </select>
+                        <span asp-validation-for="ExperienceId" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
@@ -106,6 +113,7 @@
                                 asp-items="@(new SelectList(Model.GetSectorExperienceYearGenderDtos.Genders,"Id","GenderName"))">
                             <option selected>Seçiniz</option>
                         </select>
+                        <span asp-validation-for="GenderId" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
@@ -113,12 +121,14 @@
                         <div class="editor" id="editor-1">
                             <p>Write Job Description!</p>
                         </div>
+                        <span asp-validation-for="JobDescription" class="text-danger"></span>
                     </div>
 
                     <h3 class="text-black my-5 border-bottom pb-2">Company Details</h3>
                     <div class="form-group">
                         <label asp-for="CompanyName">Firma Adı</label>
                         <input asp-for="CompanyName" class="form-control" placeholder="Firma Adı" required>
+                        <span asp-validation-for="CompanyName" class="text-danger"></span>
                     </div>
 
                     @*<div class="form-group">
@@ -155,8 +165,9 @@
                     <div class="form-group">
                         <label asp-for="ComponyLogo">Firma Logo</label> <br>
                         <label class="btn btn-primary btn-md btn-file">
-                            Resim Seç<input asp-for="ComponyLogo" hidden>
+                            Resim Seç<input asp-for="ComponyLogo" hidden required>
                         </label>
+                        <span asp-validation-for="ComponyLogo" class="text-danger"></span>
                     </div>
                 </form>
             </div>
@@ -168,7 +179,7 @@
                         <a href="#" class="btn btn-block btn-light btn-md"><span class="icon-open_in_new mr-2"></span>Ön İzle (Yakında)</a>
                     </div>
                     <div class="col-6">
-                        <button onclick="postAJob();" class="btn btn-block btn-primary btn-md">İlanı Yayınla</button>
+                        <button @*type="submit"*@ onclick="postAJob();" class="btn btn-block btn-primary btn-md">İlanı Yayınla</button>
                     </div>
                 </div>
             </div>
@@ -177,6 +188,12 @@
 </section>
 
 <script>
+    //$(document).ready(function () {
+    //    var container = $('#editor-1').get(0);
+    //    new Quill(container).root.innerHTML = "<h1>wdadwdadwdwadaw</h1>";
+    //});
+
+
     function postAJob() {
         var container = $('#editor-1').get(0);
         var JobDescription = new Quill(container).root.innerHTML;

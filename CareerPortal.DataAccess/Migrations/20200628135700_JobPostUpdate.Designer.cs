@@ -4,14 +4,16 @@ using CareerPortal.DataAccess.Concrete.EntityFramework.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CareerPortal.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200628135700_JobPostUpdate")]
+    partial class JobPostUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -101,8 +103,7 @@ namespace CareerPortal.DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("FacebookUrl")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("GenderId")
                         .HasColumnType("int");
@@ -127,8 +128,7 @@ namespace CareerPortal.DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("LinkedinUrl")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("RegionId")
                         .HasColumnType("int");
@@ -140,8 +140,7 @@ namespace CareerPortal.DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("TwitterUrl")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("WebSiteUrl")
                         .HasColumnType("nvarchar(50)")

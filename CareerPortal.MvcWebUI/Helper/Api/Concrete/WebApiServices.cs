@@ -1,5 +1,4 @@
-﻿using CareerPortal.Core.Dtos.Concrete.User;
-using CareerPortal.Core.Utilities.Security.Jwt;
+﻿using CareerPortal.Core.Utilities.Security.Jwt;
 using CareerPortal.MvcWebUI.Extensions;
 using CareerPortal.MvcWebUI.Helper.Api.Abstract;
 using Microsoft.AspNetCore.Http;

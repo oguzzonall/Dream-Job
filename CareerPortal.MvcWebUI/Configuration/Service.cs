@@ -21,6 +21,8 @@ namespace CareerPortal.MvcWebUI.Configuration
             services.AddScoped<ICountryApiService, CountryApiService>();
             services.AddScoped<IAuthApiService, AuthApiService>();
             services.AddScoped<IHomeApiService, HomeApiService>();
+            services.AddScoped<IJobGiverJobPostApiService, JobGiverJobPostApiService>();
+
             services.AddScoped<ITokenSessionHelper, TokenSessionHelper>();
         }
     }

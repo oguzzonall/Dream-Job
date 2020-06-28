@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace CareerPortal.Core.Dtos.Concrete.General
 {
-    public class GetHomePageFilterComponentsDto
+    public class GetHomePageFilterComponentsDto:Dto
     {
         public List<JobTypeDto> JobTypes { get; set; }
         public List<RegionDto> Regions { get; set; }
