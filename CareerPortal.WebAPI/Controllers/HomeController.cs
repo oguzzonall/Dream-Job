@@ -4,6 +4,7 @@ using CareerPortal.Core.Dtos.Concrete.Country;
 using CareerPortal.Core.Dtos.Concrete.Experience;
 using CareerPortal.Core.Dtos.Concrete.Gender;
 using CareerPortal.Core.Dtos.Concrete.General;
+using CareerPortal.Core.Dtos.Concrete.JobPost;
 using CareerPortal.Core.Dtos.Concrete.JobType;
 using CareerPortal.Core.Dtos.Concrete.Region;
 using CareerPortal.Core.Dtos.Concrete.Sector;
@@ -25,11 +26,11 @@ namespace CareerPortal.WebAPI.Controllers
         private readonly ISectorService _sectorService;
         private readonly IExperienceService _experienceService;
         private readonly IGenderService _genderService;
+        private readonly IJobPostService _jobPostService;
 
         private readonly IMapper _mapper;
 
-        public HomeController(ICountryService countryService, IRegionService regionService, IJobTypeService jobTypeService,
-            ISectorService sectorService, IExperienceService experienceService, IGenderService genderService, IMapper mapper)
+        public HomeController(ICountryService countryService, IRegionService regionService, IJobTypeService jobTypeService, ISectorService sectorService, IExperienceService experienceService, IGenderService genderService, IJobPostService jobPostService, IMapper mapper)
         {
             _countryService = countryService;
             _regionService = regionService;
@@ -37,6 +38,7 @@ namespace CareerPortal.WebAPI.Controllers
             _sectorService = sectorService;
             _experienceService = experienceService;
             _genderService = genderService;
+            _jobPostService = jobPostService;
             _mapper = mapper;
         }
 
@@ -100,6 +102,21 @@ namespace CareerPortal.WebAPI.Controllers
                 return Ok(new ErrorDataResult<GetSectorExperienceYearGenderDto>());
             }
             return Ok(new SuccessDataResult<GetSectorExperienceYearGenderDto>(data));
+        }
+
+        [HttpGet("gethomejobposts")]
+        public IActionResult GetHomeJobPosts()
+        {
+            var dataResult = _jobPostService.GetHomeJobPost();
+            if (dataResult.Success)
+            {
+                var jobPostDtoList = _mapper.Map<List<JobPostDto>>(dataResult.Data);
+                return Ok(new SuccessDataResult<List<JobPostDto>>(jobPostDtoList));
+            }
+            else
+            {
+                return Ok(new ErrorDataResult<List<JobPostDto>>());
+            }
         }
     }
 }

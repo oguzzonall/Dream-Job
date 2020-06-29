@@ -1,6 +1,9 @@
 ﻿using CareerPortal.Core.DataAccess.Abstract.Dals;
 using CareerPortal.Core.Entities.Concrete;
 using CareerPortal.DataAccess.Concrete.EntityFramework.Contexts;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CareerPortal.DataAccess.Concrete.EntityFramework.Repositories
 {
@@ -10,6 +13,16 @@ namespace CareerPortal.DataAccess.Concrete.EntityFramework.Repositories
 
         public EfJobPostDal(AppDbContext context) : base(context)
         {
+        }
+
+        public int Count()
+        {
+            return _appDbContext.JobPosts.Count();
+        }
+
+        public List<JobPost> JobPostsWithAllDependecies()
+        {
+            return _appDbContext.JobPosts.Include(x=>x.Region).Include(x=>x.JobType).ToList();
         }
     }
 }

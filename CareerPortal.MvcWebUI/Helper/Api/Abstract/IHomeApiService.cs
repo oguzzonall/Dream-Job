@@ -6,5 +6,7 @@ namespace CareerPortal.MvcWebUI.Helper.Api.Abstract
     {
         HomeFilterComponentsResponse GetHomeFilterComponents();
         GetSectorExperienceYearGenderResponse GetSectorExperienceYearGender();
+
+        GetJobPostsResponse GetJobPosts();
     }
 }

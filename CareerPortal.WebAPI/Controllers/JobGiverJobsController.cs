@@ -3,9 +3,6 @@ using CareerPortal.Core.Dtos.Concrete.JobPost;
 using CareerPortal.Core.Utilities.Results;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Drawing;
-using System.IO;
 
 namespace CareerPortal.WebAPI.Controllers
 {

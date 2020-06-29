@@ -5,6 +5,8 @@ using CareerPortal.Core.Dtos.Concrete.JobPost;
 using CareerPortal.Core.Entities.Concrete;
 using CareerPortal.Core.Utilities.Results;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CareerPortal.Business.Concrete
 {
@@ -21,7 +23,7 @@ namespace CareerPortal.Business.Concrete
         {
             try
             {
-                JobPost jobPost = new JobPost
+                Core.Entities.Concrete.JobPost jobPost = new Core.Entities.Concrete.JobPost
                 {
                     ComponyLogoUrl = dto.ComponyLogoUrl,
                     JobPostImageUrl = dto.JobPostImageUrl,
@@ -55,6 +57,19 @@ namespace CareerPortal.Business.Concrete
             {
                 //Loglama
                 return new ErrorDataResult<PostAJobViewModelResponseDto>(new PostAJobViewModelResponseDto { Result = false });
+            }
+        }
+
+        public IDataResult<List<JobPost>> GetHomeJobPost()
+        {
+            try
+            {
+                var jobPosts = _unitOfWork.jobPostDal.JobPostsWithAllDependecies().OrderByDescending(x => x.Id).Take(5).ToList();
+                return new SuccessDataResult<List<JobPost>>(jobPosts);
+            }
+            catch (Exception ex)
+            {
+                return new ErrorDataResult<List<JobPost>>();
             }
         }
     }

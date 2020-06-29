@@ -28,12 +28,13 @@ namespace CareerPortal.MvcWebUI.Areas.HomePage.Controllers
         public IActionResult Index()
         {
             HomeIndexViewModel model = new HomeIndexViewModel();
-            model.JobFilterComponents = _homeApiService.GetHomeFilterComponents().Data;
-            //if(!response.Success)
-            //{
-            //    //message:
-            //return View();  
-            //}
+            var responsefilter = _homeApiService.GetHomeFilterComponents();
+            if (responsefilter.Success)
+                model.JobFilterComponents = responsefilter.Data;
+
+            var responsejobposts = _homeApiService.GetJobPosts();
+            if (responsejobposts.Success)
+                model.GetJobPosts.Data = responsejobposts.Data;
             return View(model);
         }
 

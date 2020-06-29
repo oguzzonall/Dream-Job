@@ -26,5 +26,11 @@ namespace CareerPortal.MvcWebUI.Helper.Api.Concrete
             jsonData = _webApiServices.Get(ApiUrls.GetSectorExperienceYearGender).Result;
             return JsonConvert.DeserializeObject<GetSectorExperienceYearGenderResponse>(jsonData);
         }
+
+        public GetJobPostsResponse GetJobPosts()
+        {
+            jsonData = _webApiServices.Get(ApiUrls.GetHomeJobPosts).Result;
+            return JsonConvert.DeserializeObject<GetJobPostsResponse>(jsonData);
+        }
     }
 }

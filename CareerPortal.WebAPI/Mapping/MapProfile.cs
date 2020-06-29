@@ -2,6 +2,7 @@
 using CareerPortal.Core.Dtos.Concrete.Country;
 using CareerPortal.Core.Dtos.Concrete.Experience;
 using CareerPortal.Core.Dtos.Concrete.Gender;
+using CareerPortal.Core.Dtos.Concrete.JobPost;
 using CareerPortal.Core.Dtos.Concrete.JobType;
 using CareerPortal.Core.Dtos.Concrete.Region;
 using CareerPortal.Core.Dtos.Concrete.Sector;
@@ -18,6 +19,9 @@ namespace CareerPortal.WebAPI.Mapping
 
             CreateMap<Region, RegionDto>();
             CreateMap<RegionDto, Region>();
+
+            CreateMap<JobPostDto, JobPost>();
+            CreateMap<JobPost, JobPostDto>();
 
             CreateMap<JobType, JobTypeDto>();
             CreateMap<JobTypeDto, JobType>();
