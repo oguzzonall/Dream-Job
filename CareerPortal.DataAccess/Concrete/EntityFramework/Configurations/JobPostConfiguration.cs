@@ -22,6 +22,9 @@ namespace CareerPortal.DataAccess.Concrete.EntityFramework.Configurations
 
             builder.Property(x => x.JobPostImageUrl).HasMaxLength(100);
             builder.Property(x => x.ComponyLogoUrl).HasMaxLength(100);
+
+            builder.Property(x => x.CompanyName).IsRequired();
+            builder.Property(x => x.CompanyName).HasMaxLength(200);
         }
     }
 }

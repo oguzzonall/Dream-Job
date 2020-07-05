@@ -27,10 +27,13 @@ namespace CareerPortal.WebAPI.Controllers
         private readonly IExperienceService _experienceService;
         private readonly IGenderService _genderService;
         private readonly IJobPostService _jobPostService;
+        private readonly IGeneralService _generalService;
 
         private readonly IMapper _mapper;
 
-        public HomeController(ICountryService countryService, IRegionService regionService, IJobTypeService jobTypeService, ISectorService sectorService, IExperienceService experienceService, IGenderService genderService, IJobPostService jobPostService, IMapper mapper)
+        public HomeController(ICountryService countryService, IRegionService regionService, IJobTypeService jobTypeService,
+            ISectorService sectorService, IExperienceService experienceService, IGenderService genderService,
+            IJobPostService jobPostService, IGeneralService generalService, IMapper mapper)
         {
             _countryService = countryService;
             _regionService = regionService;
@@ -39,6 +42,7 @@ namespace CareerPortal.WebAPI.Controllers
             _experienceService = experienceService;
             _genderService = genderService;
             _jobPostService = jobPostService;
+            _generalService = generalService;
             _mapper = mapper;
         }
 
@@ -116,6 +120,20 @@ namespace CareerPortal.WebAPI.Controllers
             else
             {
                 return Ok(new ErrorDataResult<List<JobPostDto>>());
+            }
+        }
+
+        [HttpGet("getgeneralinformations")]
+        public IActionResult GetGeneralInformations()
+        {
+            var dataResult = _generalService.GetGeneralInformations();
+            if (dataResult.Success)
+            {
+                return Ok(new SuccessDataResult<GetGeneralInformationDto>(dataResult.Data));
+            }
+            else
+            {
+                return Ok(new ErrorDataResult<GetGeneralInformationDto>(dataResult.Message));
             }
         }
     }

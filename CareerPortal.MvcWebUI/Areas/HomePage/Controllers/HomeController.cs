@@ -35,6 +35,10 @@ namespace CareerPortal.MvcWebUI.Areas.HomePage.Controllers
             var responsejobposts = _homeApiService.GetJobPosts();
             if (responsejobposts.Success)
                 model.GetJobPosts.Data = responsejobposts.Data;
+
+            var responseGenaralInformation = _homeApiService.GetGeneralInformation();
+            if (responseGenaralInformation.Success)
+                model.GeneralInformations = responseGenaralInformation.Data;
             return View(model);
         }
 

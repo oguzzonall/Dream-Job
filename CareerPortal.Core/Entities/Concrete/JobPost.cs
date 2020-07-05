@@ -15,6 +15,7 @@ namespace CareerPortal.Core.Entities.Concrete
         public int JobPostStatusId { get; set; }
         public int GenderId { get; set; }
         public string JobPostImageUrl { get; set; }
+        public string CompanyName { get; set; }
         public string ComponyLogoUrl { get; set; }
         public string WebSiteUrl { get; set; }
         public string LinkedinUrl { get; set; }

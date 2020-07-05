@@ -70,16 +70,16 @@
 
             <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
                 <div class="d-flex align-items-center justify-content-center mb-2">
-                    <strong class="number" data-number="1930">0</strong>
+                    <strong class="number" data-number="@Model.GeneralInformations.TotalJobSeeker">0</strong>
                 </div>
-                <span class="caption">Candidates</span>
+                <span class="caption">İş Arayan</span>
             </div>
 
             <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
                 <div class="d-flex align-items-center justify-content-center mb-2">
-                    <strong class="number" data-number="54">0</strong>
+                    <strong class="number" data-number="@Model.GeneralInformations.TotalJobPost">0</strong>
                 </div>
-                <span class="caption">Jobs Posted</span>
+                <span class="caption">Toplam İlan Sayısı</span>
             </div>
 
             <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
@@ -91,9 +91,9 @@
 
             <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
                 <div class="d-flex align-items-center justify-content-center mb-2">
-                    <strong class="number" data-number="550">0</strong>
+                    <strong class="number" data-number="@Model.GeneralInformations.TotalJobGiver">0</strong>
                 </div>
-                <span class="caption">Companies</span>
+                <span class="caption">İş Veren</span>
             </div>
         </div>
     </div>
@@ -102,23 +102,22 @@
 
 <section class="site-section">
     <div class="container">
-        @if (Model.GetJobPosts != null && Model.GetJobPosts.JobPosts != null && Model.GetJobPosts.JobPosts.Count > 0)
+        @if (Model.GetJobPosts != null && Model.GetJobPosts.Data != null && Model.GetJobPosts.Data.Count > 0)
         {
             <div class="row mb-5 justify-content-center">
                 <div class="col-md-7 text-center">
-                    <h2 class="section-title mb-2">@Model.GetJobPosts.TotalJobPost İlan Listelendi</h2>
+                    <h2 class="section-title mb-2">@Model.GetJobPosts.Data.Count İlan Listelendi</h2>
                 </div>
             </div>
 
             <ul class="job-listings mb-5">
-                @foreach (var item in Model.GetJobPosts.JobPosts)
+                @foreach (var item in Model.GetJobPosts.Data)
                 {
                     <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
                         <a href="job-single.html"></a>
                         <div class="job-listing-logo">
-                            <img src="@item.ComponyLogoUrl" alt="Free Website Template by Free-Template.co" class="img-fluid" style="width:150px;height:150px">
+                            <img src="@item.ComponyLogoUrl" alt="Free Website Template by Free-Template.co" class="img-fluid">
                         </div>
-
                         <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
                             <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
                                 <h2>@item.JobPostTitle</h2>
@@ -137,7 +136,7 @@
         }
         <div class="row pagination-wrap">
             <div class="col-md-6 text-center text-md-left mb-4 mb-md-0">
-                <span>Showing 1-7 Of @Model.GetJobPosts.TotalJobPost Jobs</span>
+                <span>Showing 1-7 Of @Model.GetJobPosts.Data.Count Jobs</span>
             </div>
             <div class="col-md-6 text-center text-md-right">
                 <div class="custom-pagination ml-auto">

@@ -25,6 +25,7 @@ namespace CareerPortal.Business.Concrete
             {
                 Core.Entities.Concrete.JobPost jobPost = new Core.Entities.Concrete.JobPost
                 {
+                    CompanyName = dto.CompanyName,
                     ComponyLogoUrl = dto.ComponyLogoUrl,
                     JobPostImageUrl = dto.JobPostImageUrl,
                     ExperienceId = dto.ExperienceId,

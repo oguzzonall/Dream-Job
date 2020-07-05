@@ -12,7 +12,7 @@
         public const string GetHomePageFilterComponents = "api/home/gethomepagefiltercomponents";
         public const string GetSectorExperienceYearGender = "api/home/getsectorexperienceyeargender";
         public const string GetHomeJobPosts = "api/home/gethomejobposts";
-
+        public const string GetGeneralInformations = "api/home/getgeneralinformations";
 
         public const string AddJobPost = "api/JobGiverJobs/addjobpost";
 

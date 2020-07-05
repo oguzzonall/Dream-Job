@@ -9,6 +9,7 @@
         public static string ErrorSectorList = "Sektörler Listelenirken Hata İle Karşılaşıldı!";
         public static string ErrorExperienceList = "Tecrübe Yılları Listelenirken Hata İle Karşılaşıldı!";
         public static string ErrorGenderList = "Cinsiyetler Listelenirken Hata İle Karşılaşıldı!";
+        public static string ErrorGetGenarealInformations = "Genel Bilgiler Getirilemedi!";
 
 
 

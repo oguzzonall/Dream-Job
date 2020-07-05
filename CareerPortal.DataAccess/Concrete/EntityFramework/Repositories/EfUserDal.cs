@@ -1,4 +1,5 @@
-﻿using CareerPortal.Core.DataAccess.Abstract.Dals;
+﻿using CareerPortal.Core.Constants.Enums;
+using CareerPortal.Core.DataAccess.Abstract.Dals;
 using CareerPortal.Core.Entities.Concrete;
 using CareerPortal.DataAccess.Concrete.EntityFramework.Contexts;
 using Microsoft.EntityFrameworkCore;
@@ -32,6 +33,16 @@ namespace CareerPortal.DataAccess.Concrete.EntityFramework.Repositories
             //    return result.ToList();
             //}
             return _appDbContext.UserOperationClaims.Where(x => x.UserId == user.Id).Include(x => x.OperationClaim).Select(x => x.OperationClaim).ToList();
+        }
+
+        public int GetJobSeekerCount()
+        {
+            return _appDbContext.UserOperationClaims.Where(x => x.OperationClaimId == (int)EnumOperationClaims.IS_Arayan).Count();
+        }
+
+        public int GetJobGiverCount()
+        {
+            return _appDbContext.UserOperationClaims.Where(x => x.OperationClaimId == (int)EnumOperationClaims.Is_Veren).Count();
         }
     }
 }
